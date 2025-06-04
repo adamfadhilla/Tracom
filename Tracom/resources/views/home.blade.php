@@ -18,164 +18,279 @@
     />
     <style>
       /* Reset & base */
-      body {
-        font-family: 'Poppins', sans-serif;
-        background: #fafafa;
-        color: #2c3e50;
-        margin: 0;
-        padding: 0;
-      }
+    /* Reset & base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FCEFB4; /* Background lembut */
+  color: #5E4118; /* Teks utama */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-      /* Navbar */
-      .navbar {
-        background-color: #fff;
-        box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
-      }
+/* Navbar */
+.navbar {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-      .navbar-brand {
-        font-weight: 700;
-        font-size: 1.8rem;
-        color: #e67e22 !important;
-        letter-spacing: 1.5px;
-      }
+.navbar:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
+}
 
-      .nav-link {
-        font-weight: 500;
-        color: #2c3e50 !important;
-        position: relative;
-        transition: color 0.3s ease;
-      }
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0%;
-        height: 2px;
-        background: #e67e22;
-        left: 0;
-        bottom: -6px;
-        transition: width 0.3s ease;
-      }
-      .nav-link:hover,
-      .nav-link.active {
-        color: #e67e22 !important;
-      }
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: 100%;
-      }
+.navbar-brand {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #306F38 !important; /* Hijau khas */
+  letter-spacing: 2px;
+  cursor: default;
+  user-select: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.navbar-brand:hover {
+  color: #1E4D24 !important;
+}
 
-      /* Hero Section */
-      .hero {
-        background: linear-gradient(135deg, #fef3e4 0%, #f0f4ff 100%);
-        padding: 120px 20px 100px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
+/* Navbar Links */
+.nav-link {
+  font-weight: 600;
+  color: #5E4118 !important; /* Coklat tua */
+  position: relative;
+  margin-left: 2rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2.5px;
+  background: #BB9479; /* Coklat muda */
+  left: 0;
+  bottom: -8px;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #306F38 !important;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
 
-      .hero h1 {
-        font-size: 3.8rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        color: #e67e22;
-        text-shadow: 1px 1px 4px rgba(230, 126, 34, 0.4);
-      }
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #FCEFB4 0%, #FFFFFF 100%);
+  padding: 140px 20px 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-      .hero p {
-        font-size: 1.3rem;
-        color: #555555dd;
-        max-width: 600px;
-        margin: 0 auto 2.5rem;
-        line-height: 1.6;
-      }
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  color: #306F38;
+  text-shadow: 1px 1px 6px rgba(48, 111, 56, 0.4);
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease forwards;
+}
 
-      .btn-primary {
-        background-color: #e67e22;
-        border: none;
-        padding: 12px 36px;
-        font-weight: 600;
-        font-size: 1.2rem;
-        border-radius: 40px;
-        box-shadow: 0 5px 15px rgb(230 126 34 / 0.5);
-        transition: all 0.3s ease;
-      }
-      .btn-primary:hover {
-        background-color: #d35400;
-        box-shadow: 0 8px 20px rgb(211 84 0 / 0.7);
-        transform: translateY(-3px);
-      }
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #5E4118;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
 
-      /* Floating decorative circles */
-      .hero::before,
-      .hero::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        background: #e67e22aa;
-        filter: blur(70px);
-        z-index: 0;
-      }
-      .hero::before {
-        width: 250px;
-        height: 250px;
-        top: -80px;
-        left: -60px;
-      }
-      .hero::after {
-        width: 200px;
-        height: 200px;
-        bottom: -60px;
-        right: -50px;
-      }
+.btn-primary {
+  background-color: #BB9479; /* Coklat muda */
+  border: none;
+  padding: 14px 44px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 50px;
+  box-shadow: 0 6px 18px rgba(187, 148, 121, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+.btn-primary:hover {
+  background-color: #5E4118; /* Coklat tua */
+  box-shadow: 0 10px 28px rgba(94, 65, 24, 0.8);
+  transform: translateY(-5px) scale(1.05);
+}
 
-      /* About Section */
-      .about {
-        background: #fff;
-        padding: 80px 20px;
-        text-align: center;
-        box-shadow: 0 0 30px rgb(0 0 0 / 0.05);
-        border-radius: 12px;
-        max-width: 900px;
-        margin: -80px auto 100px; /* to overlap a bit hero */
-        position: relative;
-        z-index: 1;
-      }
-      .about h2 {
-        font-weight: 700;
-        font-size: 2.8rem;
-        margin-bottom: 1rem;
-        color: #2c3e50;
-      }
-      .about p.lead {
-        font-size: 1.25rem;
-        color: #555;
-        margin-bottom: 1rem;
-        line-height: 1.7;
-      }
+/* Floating decorative circles */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: #BB9479aa;
+  filter: blur(75px);
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+.hero::before {
+  width: 280px;
+  height: 280px;
+  top: -100px;
+  left: -80px;
+  animation-delay: 0s;
+}
+.hero::after {
+  width: 220px;
+  height: 220px;
+  bottom: -80px;
+  right: -70px;
+  animation-delay: 3s;
+}
 
-      /* Footer */
-      .footer {
-        background-color: #2c3e50;
-        color: #fff;
-        padding: 25px 20px;
-        text-align: center;
-        font-weight: 500;
-        font-size: 1rem;
-      }
+/* About Section */
+.about {
+  background: #FFFFFF;
+  padding: 100px 30px 90px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  max-width: 920px;
+  margin: -90px auto 120px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+}
+.about h2 {
+  font-weight: 800;
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  color: #306F38;
+  letter-spacing: 1.2px;
+}
+.about p.lead {
+  font-size: 1.3rem;
+  color: #5E4118;
+  margin-bottom: 1.3rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-      /* Responsive typography */
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.8rem;
-        }
-        .about {
-          margin: -60px 15px 80px;
-          padding: 50px 15px;
-        }
-        .about h2 {
-          font-size: 2.2rem;
-        }
-      }
+/* Footer */
+.footer {
+  background-color: #306F38;
+  color: #FFFFFF;
+  padding: 30px 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  user-select: none;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+.footer:hover {
+  background-color: #255626;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(15px) translateX(10px);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem 1rem;
+  }
+  .nav-link {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+  .hero p {
+    max-width: 90%;
+  }
+  .about {
+    padding: 60px 20px 60px;
+    margin: -70px 10px 80px;
+  }
+  .about h2 {
+    font-size: 2.4rem;
+  }
+  .about p.lead {
+    font-size: 1.1rem;
+  }
+  .btn-primary {
+    padding: 12px 32px;
+    font-size: 1.1rem;
+  }
+}
+
+
     </style>
 </head>
 <body>
@@ -198,7 +313,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav gap-3 align-items-center">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Beranda</a>
+            <a class="nav-link active" href="{{ route('home') }}">Beranda</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('menu') }}">Menu</a>

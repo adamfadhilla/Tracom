@@ -51,7 +51,7 @@
 
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">Tracom</a>
+    <a class="navbar-brand" href="beranda">Tracom</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -67,13 +67,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav gap-3 align-items-center">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Beranda</a>
+          <a class="nav-link active" href="{{ route('home') }}">Beranda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('menu') }}">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#tentang">Tentang Kami</a>
+          <a class="nav-link" href="{{ route('home') }}">Tentang Kami</a>
         </li>
         <li class="nav-item position-relative">
           <a class="nav-link" href="{{ route('keranjang') }}">
