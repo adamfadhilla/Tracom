@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('menu');
+            $table->string('bukti');
             $table->timestamps();
         });
     }
