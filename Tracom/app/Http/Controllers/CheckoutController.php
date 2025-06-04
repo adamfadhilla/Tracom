@@ -20,11 +20,13 @@ class CheckoutController extends Controller
         return view('checkout', compact('cart'));
     }
 
-    public function uploadBukti(Request $request) {
-        $request->validate([
-            'nama' => 'required',
-            'menu' => 'required',
-            'bukti' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    // Proses upload bukti pembayaran
+    public function uploadBukti(Request $request)
+    {
+        // Validasi inputan
+        $validated = $request->validate([
+            'nama'  => 'required|string|max:255',
+            'bukti' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         // Ambil data keranjang dari session
