@@ -8,7 +8,8 @@ class CartController extends Controller
 {
     public function index()
     {
+       
 
-        return view('keranjang'); 
+        return view('keranjang'); // tampilkan view resources/views/keranjang.blade.php
     }
 }
