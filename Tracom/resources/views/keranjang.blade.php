@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8" />
-    <title>Keranjang Belanja | Tracom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #FCEFB4; /* Warna kuning muda */
-            color: #5E4118; /* Warna coklat gelap */
-        }
-=======
   <meta charset="UTF-8" />
   <title>Keranjang Belanja | Tracom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,10 +9,9 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #fdfaf7;
-      color: #333;
+      background: #FCEFB4;
+      color: #5E4118;
     }
->>>>>>> 365768a367b9f0a8ad155c09ba3fc11c25c354eb
 
     .cart-header {
       text-align: center;
@@ -33,39 +19,10 @@
       margin-bottom: 40px;
     }
 
-<<<<<<< HEAD
-        .cart-header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #306F38; /* Warna hijau tua */
-        }
-
-        .cart-item {
-            background-color: #FFFFFF;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cart-item h5 {
-            margin: 0;
-            font-weight: 600;
-            color: #5E4118;
-        }
-
-        .cart-item .price {
-            color: #BB9479; /* Warna coklat muda */
-            font-weight: 600;
-        }
-=======
     .cart-header h1 {
       font-size: 2.8rem;
       font-weight: 700;
-      color: #e67e22;
+      color: #306F38;
     }
 
     .cart-item {
@@ -82,84 +39,16 @@
     .cart-item h5 {
       margin: 0;
       font-weight: 600;
+      color: #5E4118;
     }
 
     .cart-item .price {
-      color: #e67e22;
+      color: #BB9479;
       font-weight: 600;
     }
->>>>>>> 365768a367b9f0a8ad155c09ba3fc11c25c354eb
 
-    .cart-footer {
-      text-align: right;
-      margin-top: 30px;
-    }
-
-<<<<<<< HEAD
-        .btn-checkout {
-            background-color: #306F38;
-            border: none;
-            padding: 12px 30px;
-            color: #FFFFFF;
-            font-weight: 600;
-            border-radius: 40px;
-            transition: 0.3s ease;
-        }
-
-        .btn-checkout:hover {
-            background-color: #5E4118;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(94, 65, 24, 0.4);
-        }
-
-        footer {
-            background-color: transparent;
-            color: #5E4118;
-        }
-    </style>
-</head>
-<body>
-
-    {{-- Navbar include --}}
-    @include('partials.navbar')
-
-    <div class="container">
-        <div class="cart-header">
-            <h1>Keranjang Belanja Anda</h1>
-            <p class="text-muted">Lihat daftar pesanan sebelum checkout.</p>
-        </div>
-
-        {{-- List Keranjang --}}
-        <div class="cart-item">
-            <div>
-                <h5>Ketupat Babanci</h5>
-                <small>Qty: 2</small>
-            </div>
-            <div class="price">Rp 40.000</div>
-        </div>
-
-        <div class="cart-item">
-            <div>
-                <h5>Lontong Sayur</h5>
-                <small>Qty: 1</small>
-            </div>
-            <div class="price">Rp 20.000</div>
-        </div>
-
-        {{-- Total & Checkout --}}
-        <div class="cart-footer">
-            <h5>Total: <span style="color:#306F38;">Rp 60.000</span></h5>
-            <a href="#" class="btn btn-checkout mt-3">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
-        </div>
-    </div>
-
-    {{-- Footer --}}
-    <footer class="text-center mt-5 py-4">
-        &copy; 2025 Tracom. Semua Hak Dilindungi.
-    </footer>
-=======
     .btn-checkout {
-      background-color: #e67e22;
+      background-color: #306F38;
       border: none;
       padding: 12px 30px;
       color: #fff;
@@ -171,17 +60,53 @@
     }
 
     .btn-checkout:hover {
-      background-color: #d35400;
+      background-color: #5E4118;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(211, 84, 0, 0.4);
-      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(94, 65, 24, 0.4);
       color: #fff;
+    }
+
+    .notes-area {
+      background-color: #fff6de;
+      border: 2px dashed #bb9479;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .payment-details {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .payment-details h5 {
+      font-weight: 600;
+      color: #5E4118;
+    }
+
+    .payment-details .text-label {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .total-text {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    footer {
+      background-color: transparent;
+      color: #5E4118;
     }
   </style>
 </head>
 <body>
 
-  {{-- Navbar include --}}
+  {{-- Navbar --}}
   @include('partials.navbar')
 
   <div class="container">
@@ -190,101 +115,130 @@
       <p class="text-muted">Lihat daftar pesanan sebelum checkout.</p>
     </div>
 
-    {{-- List Keranjang dari localStorage --}}
+    {{-- List Keranjang --}}
     <div id="cart-container"></div>
->>>>>>> 365768a367b9f0a8ad155c09ba3fc11c25c354eb
 
-    {{-- Total & Checkout --}}
-    <div class="cart-footer" id="cart-summary">
-      <h5>Total: <span class="text-success">Rp 0</span></h5>
+    {{-- Notes Customer --}}
+    <div class="notes-area">
+      <label for="catatan" class="form-label fw-semibold"><i class="fas fa-pen me-2"></i>Catatan untuk penjual</label>
+      <textarea id="catatan" class="form-control" rows="3" placeholder="Contoh: tanpa pedas, pisahkan sambal, dsb."></textarea>
+    </div>
+
+    {{-- Payment Details --}}
+    <div class="payment-details">
+      <h5>Payment Details</h5>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Subtotal (<span id="total-items">0</span> menu)</span>
+        <span id="subtotal-text">Rp 0</span>
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Rounding</span>
+        <span id="rounding-text">Rp 0</span>
+      </div>
+      <hr />
+      <div class="d-flex justify-content-between">
+        <span>Total</span>
+        <span class="total-text" id="total-payment">Rp 0</span>
+      </div>
+    </div>
+
+    {{-- Tombol Checkout --}}
+    <div class="text-end mb-5">
       <a href="{{ route('checkout') }}" class="btn btn-checkout mt-3" id="btn-checkout">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
     </div>
   </div>
 
-  <footer class="text-center mt-5 py-4 text-muted">
+  <footer class="text-center mt-5 py-4">
     &copy; 2025 Tracom. Semua Hak Dilindungi.
   </footer>
 
-<script>
-  const cartContainer = document.getElementById('cart-container');
-  const cartSummary = document.getElementById('cart-summary');
-  const totalText = document.querySelector('#cart-summary h5 span');
+  {{-- Script --}}
+  <script>
+    const cartContainer = document.getElementById('cart-container');
+    const totalText = document.querySelector('#cart-summary h5 span');
 
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Simpan cart ke localStorage
-  function updateLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  // Render ulang tampilan keranjang
-  function updateCartDisplay() {
-    cartContainer.innerHTML = '';
-    let total = 0;
-
-    if (cart.length === 0) {
-      cartContainer.innerHTML = '<p class="text-center text-muted">Keranjang Anda kosong.</p>';
-      cartSummary.style.display = 'none';
-      return;
+    function updateLocalStorage() {
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    cartSummary.style.display = 'block';
+    function updateCartDisplay() {
+      cartContainer.innerHTML = '';
+      let total = 0;
 
-    cart.forEach((item, index) => {
-      const itemTotal = item.price * item.quantity;
-      total += itemTotal;
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p class="text-center text-muted">Keranjang Anda kosong.</p>';
+        document.querySelector('.payment-details').style.display = 'none';
+        document.querySelector('.btn-checkout').style.display = 'none';
+        return;
+      }
 
-      const div = document.createElement('div');
-      div.classList.add('cart-item');
-      div.innerHTML = `
-        <div>
-          <h5>${item.name}</h5>
-          <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-sm btn-outline-danger btn-decrease" aria-label="Kurangi jumlah ${item.name}" data-index="${index}">−</button>
-            <span class="fw-semibold">${item.quantity}</span>
-            <button class="btn btn-sm btn-outline-success btn-increase" aria-label="Tambah jumlah ${item.name}" data-index="${index}">+</button>
+      document.querySelector('.payment-details').style.display = 'block';
+      document.querySelector('.btn-checkout').style.display = 'inline-block';
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <div>
+            <h5>${item.name}</h5>
+            <div class="d-flex align-items-center gap-2 mt-2">
+              <button class="btn btn-sm btn-outline-danger btn-decrease" data-index="${index}">−</button>
+              <span class="fw-semibold">${item.quantity}</span>
+              <button class="btn btn-sm btn-outline-success btn-increase" data-index="${index}">+</button>
+            </div>
           </div>
-        </div>
-        <div class="price">Rp ${itemTotal.toLocaleString('id-ID')}</div>
-      `;
-      cartContainer.appendChild(div);
-    });
+          <div class="price">Rp ${itemTotal.toLocaleString('id-ID')}</div>
+        `;
+        cartContainer.appendChild(div);
+      });
 
-    totalText.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+      // Payment Calculation
+      let subtotal = total;
+      let roundedTotal = Math.round(subtotal / 1000) * 1000;
+      let rounding = roundedTotal - subtotal;
 
-    attachQuantityButtons();
-  }
+      document.getElementById('total-items').textContent = cart.length;
+      document.getElementById('subtotal-text').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+      document.getElementById('rounding-text').textContent = `${rounding >= 0 ? '' : '-'}Rp ${Math.abs(rounding).toLocaleString('id-ID')}`;
+      document.getElementById('total-payment').textContent = `Rp ${roundedTotal.toLocaleString('id-ID')}`;
 
-  // Pasang event listener tombol tambah/kurang
-  function attachQuantityButtons() {
-    document.querySelectorAll('.btn-increase').forEach(btn => {
-      btn.onclick = () => {
-        const i = btn.dataset.index;
-        cart[i].quantity++;
-        updateLocalStorage();
-        updateCartDisplay();
-      };
-    });
+      attachQuantityButtons();
+    }
 
-    document.querySelectorAll('.btn-decrease').forEach(btn => {
-      btn.onclick = () => {
-        const i = btn.dataset.index;
-        if (cart[i].quantity > 1) {
-          cart[i].quantity--;
-        } else {
-          if (confirm(`Hapus ${cart[i].name} dari keranjang?`)) {
-            cart.splice(i, 1);
+    function attachQuantityButtons() {
+      document.querySelectorAll('.btn-increase').forEach(btn => {
+        btn.onclick = () => {
+          const i = btn.dataset.index;
+          cart[i].quantity++;
+          updateLocalStorage();
+          updateCartDisplay();
+        };
+      });
+
+      document.querySelectorAll('.btn-decrease').forEach(btn => {
+        btn.onclick = () => {
+          const i = btn.dataset.index;
+          if (cart[i].quantity > 1) {
+            cart[i].quantity--;
+          } else {
+            if (confirm(`Hapus ${cart[i].name} dari keranjang?`)) {
+              cart.splice(i, 1);
+            }
           }
-        }
-        updateLocalStorage();
-        updateCartDisplay();
-      };
-    });
-  }
+          updateLocalStorage();
+          updateCartDisplay();
+        };
+      });
+    }
 
-  updateCartDisplay();
-</script>
+    updateCartDisplay();
+  </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

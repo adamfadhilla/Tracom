@@ -17,6 +17,7 @@ Route::get('/menu', [PageController::class, 'menu'])->name('menu');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'get'])->name('cart.get'); // (Opsional, jika digunakan Ajax)
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
+Route::put('/cart/update/{index}', [CartController::class, 'update'])->name('cart.update'); // ✅ Update item qty
 
 // =======================
 // Checkout
