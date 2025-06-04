@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pembayaran;
+use Illuminate\Support\Facades\Storage;
 
 class CheckoutController extends Controller
 {
-    public function index($menu) {
-        return view('checkout', compact('menu'));
+    // Menampilkan halaman checkout
+    public function index()
+    {
+        $cart = session('cart', []);
+
+        if (empty($cart)) {
+            return redirect()->route('keranjang')->with('error', 'Keranjang Anda kosong.');
+        }
+
+        return view('checkout', compact('cart'));
     }
 
     public function uploadBukti(Request $request) {
@@ -18,19 +27,36 @@ class CheckoutController extends Controller
             'bukti' => 'required|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        $path = $request->file('bukti')->store('bukti', 'public');
+        // Ambil data keranjang dari session
+        $cart = session('cart', []);
 
-        Pembayaran::create([
-            'nama' => $request->nama,
-            'menu' => $request->menu,
-            'bukti' => $path
-        ]);
+        if (empty($cart)) {
+            return redirect()->route('keranjang')->with('error', 'Keranjang Anda kosong.');
+        }
 
-        return redirect()->route('sukses');
+        // Simpan gambar bukti ke storage publik
+        $buktiPath = $request->file('bukti')->store('bukti-pembayaran', 'public');
+
+        // Simpan setiap item ke database
+        foreach ($cart as $item) {
+            Pembayaran::create([
+                'nama'  => $validated['nama'],
+                'menu'  => $item['nama'],
+                'qty'   => $item['qty'],
+                'harga' => $item['harga'],
+                'bukti' => $buktiPath,
+            ]);
+        }
+
+        // Bersihkan keranjang dari session
+        session()->forget('cart');
+
+        return redirect()->route('sukses')->with('success', 'Bukti pembayaran berhasil dikirim.');
     }
 
-    public function sukses() {
+    // Menampilkan halaman sukses
+    public function sukses()
+    {
         return view('sukses');
     }
 }
-
