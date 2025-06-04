@@ -9,8 +9,8 @@
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #fdfaf7;
-            color: #333;
+            background: #FCEFB4; /* Warna kuning muda */
+            color: #5E4118; /* Warna coklat gelap */
         }
 
         .cart-header {
@@ -22,11 +22,11 @@
         .cart-header h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            color: #e67e22;
+            color: #306F38; /* Warna hijau tua */
         }
 
         .cart-item {
-            background-color: #fff;
+            background-color: #FFFFFF;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             padding: 20px;
@@ -39,10 +39,11 @@
         .cart-item h5 {
             margin: 0;
             font-weight: 600;
+            color: #5E4118;
         }
 
         .cart-item .price {
-            color: #e67e22;
+            color: #BB9479; /* Warna coklat muda */
             font-weight: 600;
         }
 
@@ -52,27 +53,31 @@
         }
 
         .btn-checkout {
-            background-color: #e67e22;
+            background-color: #306F38;
             border: none;
             padding: 12px 30px;
-            color: #fff;
+            color: #FFFFFF;
             font-weight: 600;
             border-radius: 40px;
             transition: 0.3s ease;
         }
 
         .btn-checkout:hover {
-            background-color: #d35400;
+            background-color: #5E4118;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(211, 84, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(94, 65, 24, 0.4);
+        }
+
+        footer {
+            background-color: transparent;
+            color: #5E4118;
         }
     </style>
 </head>
 <body>
 
     {{-- Navbar include --}}
-   @include('partials.navbar')
-
+    @include('partials.navbar')
 
     <div class="container">
         <div class="cart-header">
@@ -99,13 +104,13 @@
 
         {{-- Total & Checkout --}}
         <div class="cart-footer">
-            <h5>Total: <span class="text-success">Rp 60.000</span></h5>
+            <h5>Total: <span style="color:#306F38;">Rp 60.000</span></h5>
             <a href="#" class="btn btn-checkout mt-3">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
         </div>
     </div>
 
     {{-- Footer --}}
-    <footer class="text-center mt-5 py-4 text-muted">
+    <footer class="text-center mt-5 py-4">
         &copy; 2025 Tracom. Semua Hak Dilindungi.
     </footer>
 
