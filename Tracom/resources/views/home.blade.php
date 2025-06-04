@@ -196,7 +196,7 @@
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav gap-3">
+        <ul class="navbar-nav gap-3 align-items-center">
           <li class="nav-item">
             <a class="nav-link active" href="#">Beranda</a>
           </li>
@@ -205,6 +205,18 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#tentang">Tentang Kami</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="{{ route('keranjang') }}">
+              <i class="fas fa-shopping-cart fa-lg"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="font-size: 0.7rem;"
+              >
+                0
+                <span class="visually-hidden">items in cart</span>
+              </span>
+            </a>
           </li>
         </ul>
       </div>
@@ -242,7 +254,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  
   <footer class="footer">
     <div class="container">&copy; 2025 Tracom. Semua Hak Dilindungi.</div>
   </footer>
