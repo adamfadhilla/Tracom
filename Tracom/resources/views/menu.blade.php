@@ -26,7 +26,7 @@ h1, h5, .fw-bold {
 }
 
 a, p, .text-muted {
-  color: var(--coklat-tua) !important;
+  color:    var(--coklat-tua) !important;
 }
 
 .btn-custom {
@@ -185,7 +185,7 @@ footer {
     <ul id="cart-items" class="list-group mb-3">
       <li class="list-group-item">Belum ada pesanan</li>
     </ul>
-    <a href="#" class="btn btn-custom w-100">Lihat Keranjang</a>
+    <a href="{{ route('keranjang') }}" class="btn btn-custom w-100">Lihat Keranjang</a>
   </div>
 
   <a href="#" class="btn btn-outline-secondary mt-4">← Kembali ke Beranda</a>
@@ -236,18 +236,25 @@ document.querySelectorAll('.btn-add-cart').forEach(button => {
 let cart = [];
 
 function addToCart(name, price, quantity) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
   const existing = cart.find(item => item.name === name);
   if (existing) {
     existing.quantity += quantity;
   } else {
     cart.push({ name, price, quantity });
   }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
   updateCartItems();
 }
 
+
 function updateCartItems() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const cartList = document.getElementById('cart-items');
   cartList.innerHTML = '';
+
   if (cart.length === 0) {
     cartList.innerHTML = '<li class="list-group-item">Belum ada pesanan</li>';
     return;
@@ -260,6 +267,25 @@ function updateCartItems() {
     cartList.appendChild(li);
   });
 }
+function updateCartItems() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartList = document.getElementById('cart-items');
+  cartList.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartList.innerHTML = '<li class="list-group-item">Belum ada pesanan</li>';
+    return;
+  }
+
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.classList.add('list-group-item');
+    li.textContent = `${item.name} x${item.quantity} - Rp${(item.price * item.quantity).toLocaleString()}`;
+    cartList.appendChild(li);
+  });
+}
+updateCartItems();
+
 </script>
 </body>
 </html>
