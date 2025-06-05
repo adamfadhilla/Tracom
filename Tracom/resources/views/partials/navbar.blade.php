@@ -1,29 +1,48 @@
-<!-- navbar.html -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  rel="stylesheet"
-/>
+<!-- resources/views/partials/navbar.blade.php -->
+
+<!-- Font Awesome & Bootstrap CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
 <style>
-  .navbar {
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+  .custom-navbar {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .custom-navbar:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
   }
 
   .navbar-brand {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #e67e22 !important;
-    letter-spacing: 1.5px;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #306F38 !important;
+    letter-spacing: 2px;
+    cursor: default;
+    user-select: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-brand:hover {
+    color: #1E4D24 !important;
   }
 
   .nav-link {
-    font-weight: 500;
-    color: #2c3e50 !important;
+    font-weight: 600;
+    color: #5E4118 !important;
     position: relative;
+    margin-left: 2rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
     transition: color 0.3s ease;
   }
 
@@ -31,57 +50,62 @@
     content: '';
     position: absolute;
     width: 0%;
-    height: 2px;
-    background: #e67e22;
+    height: 2.5px;
+    background: #BB9479;
     left: 0;
-    bottom: -6px;
+    bottom: -8px;
+    border-radius: 3px;
     transition: width 0.3s ease;
   }
 
   .nav-link:hover,
   .nav-link.active {
-    color: #e67e22 !important;
+    color: #306F38 !important;
   }
 
   .nav-link:hover::after,
   .nav-link.active::after {
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    .custom-navbar {
+      flex-direction: column;
+      padding: 1rem 1rem;
+    }
+
+    .nav-link {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
 </style>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container">
-    <a class="navbar-brand" href="beranda">Tracom</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <a class="navbar-brand" href="#">Tracom</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav gap-3 align-items-center">
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('home') }}">Beranda</a>
+          <a class="nav-link @if(Request::routeIs('home')) active @endif" href="{{ route('home') }}">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('menu') }}">Menu</a>
+          <a class="nav-link @if(Request::routeIs('menu')) active @endif" href="{{ route('menu') }}">Menu</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('home') }}">Tentang Kami</a>
+          <a class="nav-link" href="#tentang">Tentang Kami</a>
         </li>
         <li class="nav-item position-relative">
           <a class="nav-link" href="{{ route('keranjang') }}">
             <i class="fas fa-shopping-cart fa-lg"></i>
-            <span
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-              style="font-size: 0.7rem;"
-            >
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="font-size: 0.7rem;">
               0
               <span class="visually-hidden">items in cart</span>
             </span>
@@ -91,5 +115,3 @@
     </div>
   </div>
 </nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
