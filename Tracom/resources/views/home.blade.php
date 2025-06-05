@@ -322,16 +322,19 @@ body {
             <a class="nav-link" href="#tentang">Tentang Kami</a>
           </li>
           <li class="nav-item position-relative">
-            <a class="nav-link" href="{{ route('keranjang') }}">
-              <i class="fas fa-shopping-cart fa-lg"></i>
-              <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                style="font-size: 0.7rem;"
-              >
-                0
-                <span class="visually-hidden">items in cart</span>
-              </span>
-            </a>
+  <a class="nav-link" href="{{ route('keranjang') }}">
+    <i class="fas fa-shopping-cart fa-lg"></i>
+    <span
+      id="cart-count"
+      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      style="font-size: 0.7rem;"
+    >
+      0
+      <span class="visually-hidden">items in cart</span>
+    </span>
+  </a>
+</li>
+
           </li>
         </ul>
       </div>
@@ -373,6 +376,25 @@ body {
   <footer class="footer">
     <div class="container">&copy; 2025 Tracom. Semua Hak Dilindungi.</div>
   </footer>
+    <script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    const cartCountEl = document.getElementById('cart-count');
+    if (cartCountEl) {
+      if (totalCount > 0) {
+        cartCountEl.textContent = totalCount;
+        cartCountEl.style.display = 'inline-block';
+      } else {
+        cartCountEl.style.display = 'none'; // sembunyikan jika 0
+      }
+    }
+  }
+
+  // Panggil saat halaman load
+  updateCartCount();
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

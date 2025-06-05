@@ -239,6 +239,9 @@ document.querySelectorAll('.btn-add-cart').forEach(button => {
 let cart = [];
 
 function addToCart(name, price, quantity) {
+  quantity = parseInt(quantity);
+  if (isNaN(quantity) || quantity < 1) quantity = 1;
+
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   const existing = cart.find(item => item.name === name);
@@ -249,7 +252,9 @@ function addToCart(name, price, quantity) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartItems();
+
+  updateCartItems();  // Update daftar item di halaman (jika ada)
+  updateCartCount();  // Update badge jumlah item di navbar secara langsung
 }
 
 
