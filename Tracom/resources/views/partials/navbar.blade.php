@@ -118,7 +118,7 @@
 </nav>
 
    <script>
-  function updateCartCount() {
+  function refreshCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -134,5 +134,5 @@
   }
 
   // Panggil saat halaman load
-  updateCartCount();
+  refreshCartCount();
 </script>

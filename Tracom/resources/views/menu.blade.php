@@ -198,100 +198,103 @@
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    /* Helpers ------------------------------------------------------------- */
-    const CART_KEY = 'cart';
+  /* Helpers ------------------------------------------------------------- */
+  const CART_KEY = 'cart';
 
-    const getCart  = () => JSON.parse(localStorage.getItem(CART_KEY)) || [];
-    const saveCart = (items) => localStorage.setItem(CART_KEY, JSON.stringify(items));
+  const getCart = () => JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  const saveCart = (items) => localStorage.setItem(CART_KEY, JSON.stringify(items));
 
-    const renderCart = () => {
-      const cartList = document.getElementById('cart-items');
-      const items    = getCart();
+  const renderCart = () => {
+    const cartList = document.getElementById('cart-items');
+    const items = getCart();
 
-      cartList.innerHTML = '';
+    cartList.innerHTML = '';
 
-      if (items.length === 0) {
-        cartList.innerHTML = '<li class="list-group-item">Belum ada pesanan</li>';
+    if (items.length === 0) {
+      cartList.innerHTML = '<li class="list-group-item">Belum ada pesanan</li>';
+      return;
+    }
+
+    items.forEach(({ name, price, quantity }) => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.textContent = `${name} x${quantity} - Rp${(price * quantity).toLocaleString()}`;
+      cartList.appendChild(li);
+    });
+  };
+
+  const updateCartCount = () => {
+    const items = getCart();
+    const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
+    // Cari elemen badge di navbar (ubah sesuai ID/selector badge kamu)
+    const cartCountEl = document.querySelector('.fa-shopping-cart + .badge');
+    if (cartCountEl) {
+      if (totalQuantity > 0) {
+        cartCountEl.textContent = totalQuantity;
+        cartCountEl.style.display = 'inline-block';
+      } else {
+        cartCountEl.style.display = 'none';
+      }
+    }
+  };
+
+  const addToCart = (name, price, quantity) => {
+    const items = getCart();
+    const exist = items.find(item => item.name === name);
+
+    if (exist) exist.quantity += quantity;
+    else items.push({ name, price, quantity });
+
+    saveCart(items);
+    renderCart();
+    updateCartCount();
+  };
+
+  /* UI bindings --------------------------------------------------------- */
+  document.querySelectorAll('.btn-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.add('d-none');
+      btn.parentElement.querySelector('.order-input').classList.remove('d-none');
+    });
+  });
+
+  document.querySelectorAll('.btn-cancel').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const orderInput = btn.closest('.order-input');
+      orderInput.classList.add('d-none');
+      orderInput.parentElement.querySelector('.btn-add').classList.remove('d-none');
+    });
+  });
+
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const orderInput = btn.closest('.order-input');
+      const qtyInput = orderInput.querySelector('.quantity-input');
+      const quantity = parseInt(qtyInput.value, 10) || 0;
+
+      if (quantity < 1) {
+        alert('Masukkan jumlah minimal 1');
         return;
       }
 
-      items.forEach(({ name, price, quantity }) => {
-        const li      = document.createElement('li');
-        li.className  = 'list-group-item';
-        li.textContent = `${name} x${quantity} - Rp${(price * quantity).toLocaleString()}`;
-        cartList.appendChild(li);
-      });
-    };
+      const cardBody = btn.closest('.card-body');
+      const addBtn = cardBody.querySelector('.btn-add');
+      const { name, price } = addBtn.dataset;
 
-    const addToCart = (name, price, quantity) => {
-      const items = getCart();
-      const exist = items.find(item => item.name === name);
+      addToCart(name, parseInt(price, 10), quantity);
 
-      if (exist) exist.quantity += quantity;
-      else       items.push({ name, price, quantity });
-
-<<<<<<< HEAD
-function addToCart(name, price, quantity) {
-  quantity = parseInt(quantity);
-  if (isNaN(quantity) || quantity < 1) quantity = 1;
-
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-=======
-      saveCart(items);
-      renderCart();
-    };
->>>>>>> 960dfb7a9fd13e034b5c8aa8150bed3f04bf5c0f
-
-    /* UI bindings --------------------------------------------------------- */
-    document.querySelectorAll('.btn-add').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.add('d-none');
-        btn.parentElement.querySelector('.order-input').classList.remove('d-none');
-      });
+      // Reset UI
+      orderInput.classList.add('d-none');
+      addBtn.classList.remove('d-none');
+      qtyInput.value = 1;
     });
+  });
 
-<<<<<<< HEAD
-  localStorage.setItem('cart', JSON.stringify(cart));
+  /* Init ---------------------------------------------------------------- */
+  renderCart();
+  updateCartCount();
+</script>
 
-  updateCartItems();  // Update daftar item di halaman (jika ada)
-  updateCartCount();  // Update badge jumlah item di navbar secara langsung
-}
-=======
-    document.querySelectorAll('.btn-cancel').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const orderInput = btn.closest('.order-input');
-        orderInput.classList.add('d-none');
-        orderInput.parentElement.querySelector('.btn-add').classList.remove('d-none');
-      });
-    });
->>>>>>> 960dfb7a9fd13e034b5c8aa8150bed3f04bf5c0f
-
-    document.querySelectorAll('.btn-add-cart').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const orderInput = btn.closest('.order-input');
-        const qtyInput   = orderInput.querySelector('.quantity-input');
-        const quantity   = parseInt(qtyInput.value, 10) || 0;
-
-        if (quantity < 1) {
-          alert('Masukkan jumlah minimal 1');
-          return;
-        }
-
-        const cardBody = btn.closest('.card-body');
-        const addBtn   = cardBody.querySelector('.btn-add');
-        const { name, price } = addBtn.dataset;
-
-        addToCart(name, parseInt(price, 10), quantity);
-
-        // Reset UI
-        orderInput.classList.add('d-none');
-        addBtn.classList.remove('d-none');
-        qtyInput.value = 1;
-      });
-    });
-
-    /* Init ---------------------------------------------------------------- */
-    renderCart();
-  </script>
 </body>
 </html>
