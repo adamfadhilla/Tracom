@@ -9,4 +9,9 @@ class Order extends Model
     protected $fillable = [
         'nama', 'alamat', 'telepon', 'metode', 'cart', 'total'
     ];
+
+    protected $casts = [
+    'cart' => 'array', // Ini membuat Laravel otomatis decode JSON ke array saat akses $order->cart
+];
+
 }

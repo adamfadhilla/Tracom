@@ -27,7 +27,13 @@
 
   <img src="{{ asset('qris.png') }}" alt="QRIS" class="qris-img">
 
-  <p>Total: <strong>Rp {{ number_format(collect($order->items)->sum(fn($i) => $i['price'] * $i['quantity']), 0, ',', '.') }}</strong></p>
+ @php
+  $items = $order->cart;
+  $total = collect($items)->sum(fn($item) => $item['price'] * $item['quantity']);
+@endphp
+
+<p>Total: <strong>Rp {{ number_format($total, 0, ',', '.') }}</strong></p>
+
 
   <p class="mt-3 text-muted">Setelah pembayaran, silakan konfirmasi ke admin.</p>
 </div>
