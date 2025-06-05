@@ -136,6 +136,9 @@ footer {
   </style>
 </head>
 <body class="py-5">
+{{-- Navbar --}}
+  @include('partials.navbar')
+
 
 <div class="container text-center">
   <h1 class="mb-4 fw-bold">Menu Makanan Tracom</h1>
