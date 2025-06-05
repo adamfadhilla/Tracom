@@ -26,7 +26,7 @@
     }
 
     .cart-item {
-      background-color: #fff;
+      background-color: #FFFFFF;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       padding: 20px;
@@ -34,6 +34,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .food-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #BB9479;
     }
 
     .cart-item h5 {
@@ -68,17 +76,17 @@
 
     .notes-area {
       background-color: #fff6de;
-      border: 2px dashed #bb9479;
+      border: 2px dashed #BB9479;
       padding: 15px;
       border-radius: 10px;
       margin-bottom: 25px;
     }
 
     .payment-details {
-      background: #fff;
+      background: #FFFFFF;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       margin-bottom: 20px;
     }
 
@@ -87,15 +95,10 @@
       color: #5E4118;
     }
 
-    .payment-details .text-label {
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
     .total-text {
       font-size: 1.4rem;
       font-weight: bold;
-      color: #e91e63;
+      color: #306F38;
     }
 
     footer {
@@ -131,10 +134,6 @@
         <span>Subtotal (<span id="total-items">0</span> menu)</span>
         <span id="subtotal-text">Rp 0</span>
       </div>
-      <div class="d-flex justify-content-between">
-        <span>Rounding</span>
-        <span id="rounding-text">Rp 0</span>
-      </div>
       <hr />
       <div class="d-flex justify-content-between">
         <span>Total</span>
@@ -155,7 +154,6 @@
   {{-- Script --}}
   <script>
     const cartContainer = document.getElementById('cart-container');
-    const totalText = document.querySelector('#cart-summary h5 span');
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -184,12 +182,15 @@
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.innerHTML = `
-          <div>
-            <h5>${item.name}</h5>
-            <div class="d-flex align-items-center gap-2 mt-2">
-              <button class="btn btn-sm btn-outline-danger btn-decrease" data-index="${index}">−</button>
-              <span class="fw-semibold">${item.quantity}</span>
-              <button class="btn btn-sm btn-outline-success btn-increase" data-index="${index}">+</button>
+          <div class="d-flex align-items-center">
+            <img src="${item.image}" alt="${item.name}" class="food-image me-3">
+            <div>
+              <h5>${item.name}</h5>
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <button class="btn btn-sm btn-outline-danger btn-decrease" data-index="${index}">−</button>
+                <span class="fw-semibold">${item.quantity}</span>
+                <button class="btn btn-sm btn-outline-success btn-increase" data-index="${index}">+</button>
+              </div>
             </div>
           </div>
           <div class="price">Rp ${itemTotal.toLocaleString('id-ID')}</div>
@@ -197,15 +198,10 @@
         cartContainer.appendChild(div);
       });
 
-      // Payment Calculation
-      let subtotal = total;
-      let roundedTotal = Math.round(subtotal / 1000) * 1000;
-      let rounding = roundedTotal - subtotal;
-
+      // Update total
       document.getElementById('total-items').textContent = cart.length;
-      document.getElementById('subtotal-text').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
-      document.getElementById('rounding-text').textContent = `${rounding >= 0 ? '' : '-'}Rp ${Math.abs(rounding).toLocaleString('id-ID')}`;
-      document.getElementById('total-payment').textContent = `Rp ${roundedTotal.toLocaleString('id-ID')}`;
+      document.getElementById('subtotal-text').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+      document.getElementById('total-payment').textContent = `Rp ${total.toLocaleString('id-ID')}`;
 
       attachQuantityButtons();
     }
