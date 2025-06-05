@@ -143,7 +143,7 @@
 
     {{-- Tombol Checkout --}}
     <div class="text-end mb-5">
-      <a href="{{ route('checkout') }}" class="btn btn-checkout mt-3" id="btn-checkout">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
+      <a href="{{ route('checkout.form') }}" class="btn btn-checkout mt-3" id="btn-checkout">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
     </div>
   </div>
 

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CheckoutController;
+
+
 use App\Http\Controllers\CartController;
 
 // =======================
@@ -22,6 +24,13 @@ Route::put('/cart/update/{index}', [CartController::class, 'update'])->name('car
 // =======================
 // Checkout
 // =======================
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/checkout/kirim', [CheckoutController::class, 'uploadBukti'])->name('checkout.kirim');
-Route::get('/checkout/sukses', [CheckoutController::class, 'sukses'])->name('sukses');
+
+Route::get('/checkout', function () {
+    return view('checkout'); // Tampilkan halaman checkout (view checkout.blade.php)
+})->name('checkout.form');
+
+Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::get('/checkout/qris/{id}', [CheckoutController::class, 'showQRIS'])->name('checkout.qris');
+Route::get('/checkout/success', function () {
+    return view('checkout.success'); // Halaman sukses setelah checkout berhasil
+})->name('checkout.success');
