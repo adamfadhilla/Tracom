@@ -42,6 +42,7 @@
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid #BB9479;
+      margin-right: 20px;
     }
 
     .cart-item h5 {
@@ -121,15 +122,15 @@
     {{-- List Keranjang --}}
     <div id="cart-container"></div>
 
-    {{-- Notes Customer --}}
+    {{-- Catatan --}}
     <div class="notes-area">
       <label for="catatan" class="form-label fw-semibold"><i class="fas fa-pen me-2"></i>Catatan untuk penjual</label>
       <textarea id="catatan" class="form-control" rows="3" placeholder="Contoh: tanpa pedas, pisahkan sambal, dsb."></textarea>
     </div>
 
-    {{-- Payment Details --}}
+    {{-- Rincian Pembayaran --}}
     <div class="payment-details">
-      <h5>Payment Details</h5>
+      <h5>Rincian Pembayaran</h5>
       <div class="d-flex justify-content-between mt-3">
         <span>Subtotal (<span id="total-items">0</span> menu)</span>
         <span id="subtotal-text">Rp 0</span>
@@ -151,11 +152,19 @@
     &copy; 2025 Tracom. Semua Hak Dilindungi.
   </footer>
 
-  {{-- Script --}}
   <script>
     const cartContainer = document.getElementById('cart-container');
-
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Fungsi untuk dapatkan gambar berdasarkan nama menu
+    function getImageForItem(name) {
+      name = name.toLowerCase();
+      if (name.includes("lontong")) return "{{ asset('img/lontong.jpeg') }}";
+      if (name.includes("ketupat")) return "{{ asset('img/ketupat.jpeg') }}";
+      if (name.includes("nasi")) return "{{ asset('img/nasi.jpeg') }}";
+      // Tambahkan menu lain jika ada
+      return "{{ asset('img/ketupat.jpeg') }}"; // default
+    }
 
     function updateLocalStorage() {
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -179,11 +188,13 @@
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
 
+        const imgSrc = getImageForItem(item.name);
+
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.innerHTML = `
           <div class="d-flex align-items-center">
-            <img src="${item.image}" alt="${item.name}" class="food-image me-3">
+           <img src="${imgSrc}" class="food-image" alt="${item.name}" />
             <div>
               <h5>${item.name}</h5>
               <div class="d-flex align-items-center gap-2 mt-2">
@@ -198,7 +209,6 @@
         cartContainer.appendChild(div);
       });
 
-      // Update total
       document.getElementById('total-items').textContent = cart.length;
       document.getElementById('subtotal-text').textContent = `Rp ${total.toLocaleString('id-ID')}`;
       document.getElementById('total-payment').textContent = `Rp ${total.toLocaleString('id-ID')}`;
