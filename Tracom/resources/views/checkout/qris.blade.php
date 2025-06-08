@@ -27,8 +27,8 @@
 
   <img src="{{ asset('qris.png') }}" alt="QRIS" class="qris-img">
 
- @php
-  $items = $order->cart;
+@php
+  $items = json_decode($order->cart, true);
   $total = collect($items)->sum(fn($item) => $item['price'] * $item['quantity']);
 @endphp
 
