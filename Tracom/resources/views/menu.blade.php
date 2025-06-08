@@ -20,6 +20,7 @@
     }
 
     body {
+       margin-top: 70px;
       background-color: var(--kuning-krem);
       font-family: 'Poppins', sans-serif;
       color: var(--coklat-tua);
@@ -36,7 +37,6 @@
       color: var(--coklat-tua) !important;
     }
 
-    /* Buttons */
     .btn-custom,
     .btn-success {
       background-color: var(--hijau);
@@ -64,7 +64,6 @@
       transform: scale(1.05);
     }
 
-    /* Cards */
     .card {
       position: relative;
       padding-top: 80px;
@@ -94,11 +93,14 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
     }
 
-    .card-body { padding-top: 0; }
+    .card-body {
+      padding-top: 0;
+    }
 
-    .menu-wrapper   { margin-top: 100px; }
+    .menu-wrapper {
+      margin-top: 100px;
+    }
 
-    /* Order Summary */
     .order-summary {
       max-width: 600px;
       margin: 50px auto 0;
@@ -119,17 +121,6 @@
       font-weight: 500;
     }
 
-    a.btn-outline-secondary.mt-4 {
-      color: var(--coklat-tua);
-      border-color: var(--coklat-tua);
-    }
-
-    a.btn-outline-secondary.mt-4:hover {
-      background-color: var(--coklat-tua);
-      color: var(--putih);
-    }
-
-    /* Footer */
     footer {
       margin-top: 60px;
       padding: 20px;
@@ -141,30 +132,23 @@
     }
   </style>
 </head>
-<body class="py-5">
-  {{-- Navbar --}}
+<body>
+{{-- Navbar --}}
   @include('partials.navbar')
-
   <div class="container text-center">
     <h1 class="mb-4 fw-bold">Menu Makanan Tracom</h1>
     <p class="text-muted mb-5">Makanan tradisional khas dengan rasa luar biasa 🍴</p>
 
     <div class="row justify-content-center menu-wrapper">
-      <!-- Ketupat Babanci -->
+      <!-- Menu 1 -->
       <div class="col-md-4 mb-5">
         <div class="card h-100 shadow-sm">
-          <img src="{{ asset('img/ketupat.jpeg') }}" class="circle-img" alt="Ketupat Babanci" />
+          <img src="img/ketupat.jpeg" class="circle-img" alt="Ketupat Babanci" />
           <div class="card-body">
             <h5 class="fw-bold">Ketupat Babanci</h5>
             <p class="text-muted">Cita rasa khas Betawi yang kaya rempah dan nikmat.</p>
             <p class="fw-bold">Rp25.000</p>
-
-            <button class="btn btn-custom w-100 btn-add"
-                    data-name="Ketupat Babanci"
-                    data-price="25000">
-              Add
-            </button>
-
+            <button class="btn btn-custom w-100 btn-add" data-name="Ketupat Babanci" data-price="25000">Add</button>
             <div class="order-input mt-3 d-none">
               <input type="number" min="1" value="1" class="form-control mb-2 quantity-input" />
               <button class="btn btn-success w-100 btn-add-cart">Tambah ke Keranjang</button>
@@ -174,21 +158,15 @@
         </div>
       </div>
 
-      <!-- Lontong Sayur -->
+      <!-- Menu 2 -->
       <div class="col-md-4 mb-5">
         <div class="card h-100 shadow-sm">
-          <img src="{{ asset('img/lontong.jpeg') }}" class="circle-img" alt="Lontong Sayur" />
+          <img src="img/lontong.jpeg" class="circle-img" alt="Lontong Sayur" />
           <div class="card-body">
             <h5 class="fw-bold">Lontong Sayur</h5>
             <p class="text-muted">Lontong empuk disajikan dengan kuah santan gurih.</p>
             <p class="fw-bold">Rp20.000</p>
-
-            <button class="btn btn-custom w-100 btn-add"
-                    data-name="Lontong Sayur"
-                    data-price="20000">
-              Add
-            </button>
-
+            <button class="btn btn-custom w-100 btn-add" data-name="Lontong Sayur" data-price="20000">Add</button>
             <div class="order-input mt-3 d-none">
               <input type="number" min="1" value="1" class="form-control mb-2 quantity-input" />
               <button class="btn btn-success w-100 btn-add-cart">Tambah ke Keranjang</button>
@@ -199,16 +177,16 @@
       </div>
     </div>
 
-    <!-- Order Summary -->
+    <!-- Ringkasan Pesanan -->
     <div class="order-summary">
       <h4 class="fw-bold">Keranjang Pesanan</h4>
       <ul id="cart-items" class="list-group mb-3">
         <li class="list-group-item">Belum ada pesanan</li>
       </ul>
-      <a href="{{ route('keranjang') }}" class="btn btn-custom w-100">Lihat Keranjang</a>
+      <a href="keranjang.html" class="btn btn-custom w-100">Lihat Keranjang</a>
     </div>
 
-    <a href="#" class="btn btn-outline-secondary mt-4">← Kembali ke Beranda</a>
+    <a href="index.html" class="btn btn-outline-secondary mt-4">← Kembali ke Beranda</a>
   </div>
 
   <footer>
@@ -216,7 +194,6 @@
   </footer>
 
   <!-- JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     const CART_KEY = 'cart';
 
@@ -242,29 +219,17 @@
       });
     };
 
-    const updateCartCount = () => {
-      const items = getCart();
-      const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-      const cartCountEl = document.querySelector('.fa-shopping-cart + .badge');
-      if (cartCountEl) {
-        if (totalQuantity > 0) {
-          cartCountEl.textContent = totalQuantity;
-          cartCountEl.style.display = 'inline-block';
-        } else {
-          cartCountEl.style.display = 'none';
-        }
-      }
-    };
-
     const addToCart = (name, price, quantity) => {
       const items = getCart();
-      const exist = items.find(item => item.name === name);
-      if (exist) exist.quantity += quantity;
-      else items.push({ name, price, quantity });
+      const existing = items.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        items.push({ name, price, quantity });
+      }
 
       saveCart(items);
       renderCart();
-      updateCartCount();
     };
 
     document.querySelectorAll('.btn-add').forEach(btn => {
@@ -306,7 +271,6 @@
     });
 
     renderCart();
-    updateCartCount();
   </script>
 </body>
 </html>

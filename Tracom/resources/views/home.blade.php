@@ -360,14 +360,12 @@ body {
     <div class="container">
       <h2>Tentang Tracom</h2>
       <p class="lead">
-        Tracom adalah rumah makan yang berfokus pada sajian khas Betawi,
-        terutama <strong>Ketupat Babanci</strong> dan <strong>Lontong Sayur</strong>.
-        Kami mengedepankan rasa otentik dengan bahan segar dan resep tradisional
-        yang diwariskan dari generasi ke generasi.
+        Tracom (Tradevis Company) adalah perusahaan kuliner yang bergerak di bidang makanan tradisional Indonesia. Berdiri dengan semangat melestarikan cita rasa lokal, Tracom mengangkat dua sajian khas yang menggugah selera: Lontong Sayur dan Ketupat Babanci.
+
       </p>
       <p>
-        Dengan suasana modern dan layanan ramah, kami siap menyambut Anda yang
-        rindu cita rasa khas Jakarta tempo dulu.
+        Kami percaya bahwa makanan bukan sekadar konsumsi, melainkan warisan budaya yang patut dijaga dan diperkenalkan ke generasi muda maupun pasar yang lebih luas.
+
       </p>
     </div>
   </section>

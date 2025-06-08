@@ -1,17 +1,10 @@
+<!-- resources/views/partials/navbar.blade.php -->
+
 <!-- Font Awesome & Bootstrap CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
 <style>
-  /* Warna utama badge cart disesuaikan */
-  #cart-count {
-    font-size: 0.7rem;
-    display: none;
-    transform: translate(-30%, -60%);
-    background-color: #BB9479 !important; /* aksen cokelat muda */
-    color: white;
-  }
-
   .custom-navbar {
     background-color: #FFFFFF;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
@@ -88,7 +81,7 @@
   }
 </style>
 
-<nav class="navbar navbar-expand-lg custom-navbar mt-3 mb-4">
+<nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container">
     <a class="navbar-brand" href="#">Tracom</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -109,16 +102,6 @@
           <a class="nav-link" href="#tentang">Tentang Kami</a>
         </li>
         <li class="nav-item position-relative">
-<<<<<<< HEAD
-          <a class="nav-link" href="{{ route('keranjang') }}">
-            <i class="fas fa-shopping-cart fa-lg"></i>
-            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
-              0
-              <span class="visually-hidden">items in cart</span>
-            </span>
-          </a>
-        </li>
-=======
   <a class="nav-link" href="{{ route('keranjang') }}">
     <i class="fas fa-shopping-cart fa-lg"></i>
     <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -127,6 +110,7 @@
       <span class="visually-hidden">items in cart</span>
     </span>
   </a>
+
   @auth('kasir')
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -147,16 +131,15 @@
     <a class="nav-link btn btn-outline-success px-3 py-1" href="{{ route('kasir.login') }}">Login Kasir</a>
   </li>
 @endauth
-
 </li>
 
->>>>>>> 573d61179b6d3464b8990a49dd85d5a5f009733e
+
       </ul>
     </div>
   </div>
 </nav>
 
-<script>
+   <script>
   function refreshCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -167,10 +150,11 @@
         cartCountEl.textContent = totalCount;
         cartCountEl.style.display = 'inline-block';
       } else {
-        cartCountEl.style.display = 'none';
+        cartCountEl.style.display = 'none'; // sembunyikan jika 0
       }
     }
   }
 
-  document.addEventListener('DOMContentLoaded', refreshCartCount);
+  // Panggil saat halaman load
+  refreshCartCount();
 </script>
