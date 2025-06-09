@@ -7,175 +7,105 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
- :root {
-  --kuning-krem: #FCEFB4;
-  --hijau-gelap: #306F38;
-  --coklat-lembut: #BB9479;
-  --coklat-tua: #5E4118;
-  --putih: #ffffff;
-}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #FCEFB4;
+      color: #5E4118;
+    }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--kuning-krem) !important;
-  color: var(--coklat-tua);
-  margin: 0;
-  padding: 0;
-}
+    .cart-header {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
 
-.cart-header {
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 40px;
-}
+    .cart-header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #306F38;
+    }
 
-.cart-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--hijau-gelap);
-}
+    .cart-item {
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.cart-header p {
-  font-size: 1rem;
-  color: #7a6d57;
-}
+    .food-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #BB9479;
+      margin-right: 20px;
+    }
 
-.cart-item {
-  background-color: var(--putih);
-  border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  padding: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: transform 0.2s ease;
-}
+    .cart-item h5 {
+      margin: 0;
+      font-weight: 600;
+      color: #5E4118;
+    }
 
-.cart-item:hover {
-  transform: scale(1.01);
-}
+    .cart-item .price {
+      color: #BB9479;
+      font-weight: 600;
+    }
 
-.food-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid var(--coklat-lembut);
-  margin-right: 20px;
-}
+    .btn-checkout {
+      background-color: #306F38;
+      border: none;
+      padding: 12px 30px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 40px;
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.cart-item h5 {
-  margin: 0;
-  font-weight: 600;
-  color: var(--coklat-tua);
-  font-size: 1.1rem;
-}
+    .btn-checkout:hover {
+      background-color: #5E4118;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(94, 65, 24, 0.4);
+      color: #fff;
+    }
 
-.cart-item .price {
-  color: var(--coklat-lembut);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.btn-checkout {
-  background: linear-gradient(135deg, #306F38, #5E4118);
-  color: #fff !important; /* pastikan !important benar penulisannya */
-  padding: 14px 36px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(94, 65, 24, 0.2);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
+    .notes-area {
+      background-color: #fff6de;
+      border: 2px dashed #BB9479;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
 
-.btn-checkout:hover {
-  background: linear-gradient(135deg, #5E4118, #306F38); /* balik arah gradasi saat hover */
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(94, 65, 24, 0.35);
-  color: #fff; !important;
-}
+    .payment-details {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
 
-.btn-checkout i {
-  transition: transform 0.3s ease;
-}
+    .payment-details h5 {
+      font-weight: 600;
+      color: #5E4118;
+    }
 
-.btn-checkout:hover i {
-  transform: translateX(5px); /* efek panah maju saat hover */
-}
+    .total-text {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #306F38;
+    }
 
-.notes-area {
-  background-color: var(--putih);
-  border: 2px dashed var(--coklat-lembut);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-}
-
-.notes-area label {
-  color: var(--coklat-tua);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.payment-details {
-  background: var(--putih);
-  border-radius: 16px;
-  padding: 20px 24px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  margin-bottom: 24px;
-}
-
-.payment-details h5 {
-  font-weight: 600;
-  color: var(--coklat-tua);
-  font-size: 1.2rem;
-}
-
-.total-text {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--hijau-gelap);
-}
-
-footer {
-  background-color: transparent;
-  color: var(--coklat-tua);
-  font-size: 0.95rem;
-}
-
-button.btn-sm {
-  font-size: 0.85rem;
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-weight: 600;
-}
-
-button.btn-outline-success {
-  border-color: var(--hijau-gelap);
-  color: var(--hijau-gelap);
-}
-
-button.btn-outline-success:hover {
-  background-color: var(--hijau-gelap);
-  color: #fff;
-}
-
-button.btn-outline-danger {
-  border-color: #bb5a5a;
-  color: #bb5a5a;
-}
-
-button.btn-outline-danger:hover {
-  background-color: #bb5a5a;
-  color: #fff;
-}
-
+    footer {
+      background-color: transparent;
+      color: #5E4118;
+    }
   </style>
 </head>
 <body>
@@ -231,6 +161,7 @@ button.btn-outline-danger:hover {
       name = name.toLowerCase();
       if (name.includes("lontong")) return "{{ asset('img/lontong.jpeg') }}";
       if (name.includes("ketupat")) return "{{ asset('img/ketupat.jpeg') }}";
+      if (name.includes("nasi")) return "{{ asset('img/nasi.jpeg') }}";
       // Tambahkan menu lain jika ada
       return "{{ asset('img/ketupat.jpeg') }}"; // default
     }
