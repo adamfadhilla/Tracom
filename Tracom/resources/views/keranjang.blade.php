@@ -7,11 +7,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #FCEFB4;
-      color: #5E4118;
-    }
+      :root {
+    --kuning-krem: #FCEFB4;
+  }
+    
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--kuning-krem) !important;
+    color: #5E4118;
+  }
 
     .cart-header {
       text-align: center;
@@ -76,7 +80,7 @@
     }
 
     .notes-area {
-      background-color: #fff6de;
+      background-color:rgb(255, 255, 255);
       border: 2px dashed #BB9479;
       padding: 15px;
       border-radius: 10px;
@@ -161,7 +165,6 @@
       name = name.toLowerCase();
       if (name.includes("lontong")) return "{{ asset('img/lontong.jpeg') }}";
       if (name.includes("ketupat")) return "{{ asset('img/ketupat.jpeg') }}";
-      if (name.includes("nasi")) return "{{ asset('img/nasi.jpeg') }}";
       // Tambahkan menu lain jika ada
       return "{{ asset('img/ketupat.jpeg') }}"; // default
     }
