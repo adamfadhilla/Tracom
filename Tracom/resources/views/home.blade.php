@@ -355,22 +355,215 @@ body {
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about" id="tentang">
-    <div class="container">
-      <h2>Tentang Tracom</h2>
-      <p class="lead">
-        Tracom (Tradevis Company) adalah perusahaan kuliner yang bergerak di bidang makanan tradisional Indonesia. Berdiri dengan semangat melestarikan cita rasa lokal, Tracom mengangkat dua sajian khas yang menggugah selera: Lontong Sayur dan Ketupat Babanci.
+<!-- ======= About Section ======= -->
+<section class="about" id="tentang">
+  <style>
+    .about {
+      padding: 4rem 2rem;
+      background-color: #fffbe6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #3c2f1c;
+    }
 
-      </p>
+    .about h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      color: #306F38;
+      margin-bottom: 2rem;
+    }
+
+    .about p.lead {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #5E4118;
+    }
+
+    .about p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: #5E4118;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-section {
+      margin-top: 3rem;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-section h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #306F38;
+      margin-bottom: 1rem;
+    }
+
+    .about-section ul {
+      padding-left: 1.2rem;
+    }
+
+    .about-section ul li {
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      color: #5E4118;
+      line-height: 1.6;
+    }
+
+    .product-highlight {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .product-item {
+      background: #FCEFB4;
+      padding: 1rem 1.5rem;
+      border-left: 6px solid #306F38;
+      border-radius: 8px;
+    }
+
+    .product-item strong {
+      font-size: 1.2rem;
+      color: #306F38;
+    }
+
+    .company-profile {
+      background: #fdf5cc;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .company-profile table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .company-profile td {
+      padding: 0.5rem 0;
+      vertical-align: top;
+      font-size: 1.05rem;
+      color: #5E4118;
+    }
+
+    .company-profile td:first-child {
+      font-weight: 600;
+      width: 160px;
+    }
+
+    @media (max-width: 768px) {
+      .about h2 {
+        font-size: 2rem;
+      }
+
+      .about-section h3 {
+        font-size: 1.5rem;
+      }
+
+      .product-item {
+        font-size: 0.95rem;
+      }
+
+      .company-profile td {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <h2>Tentang Tracom</h2>
+    <p class="lead">
+      Tracom (Tradevis Company) adalah perusahaan kuliner yang bergerak di bidang makanan tradisional Indonesia. Berdiri dengan semangat melestarikan cita rasa lokal, Tracom mengangkat dua sajian khas yang menggugah selera: <strong>Lontong Sayur</strong> dan <strong>Ketupat Babanci</strong>.
+    </p>
+    <p>
+      Mengusung konsep rasa otentik dan bahan-bahan pilihan, Tracom hadir sebagai pelopor kuliner tradisional yang dikemas secara modern dan higienis, namun tetap mempertahankan keaslian rasa.
+    </p>
+    <p>
+      Kami percaya bahwa makanan bukan sekadar konsumsi, melainkan warisan budaya yang patut dijaga dan diperkenalkan ke generasi muda maupun pasar yang lebih luas.
+    </p>
+
+    <div class="about-section">
+      <h3>Visi</h3>
       <p>
-        Kami percaya bahwa makanan bukan sekadar konsumsi, melainkan warisan budaya yang patut dijaga dan diperkenalkan ke generasi muda maupun pasar yang lebih luas.
-
+        Menjadi perusahaan kuliner terdepan dalam menghadirkan makanan tradisional Indonesia yang berkualitas, otentik, dan dicintai oleh semua kalangan.
       </p>
     </div>
-  </section>
 
-  
+    <div class="about-section">
+      <h3>Misi</h3>
+      <ul>
+        <li>Menyajikan lontong sayur dan ketupat babanci dengan rasa yang konsisten, lezat, dan higienis.</li>
+        <li>Melestarikan kuliner khas Indonesia melalui inovasi dan pendekatan modern.</li>
+        <li>Memberikan pelayanan terbaik kepada pelanggan dengan harga yang terjangkau.</li>
+        <li>Meningkatkan kesejahteraan masyarakat melalui pemberdayaan tenaga kerja lokal.</li>
+        <li>Membangun jaringan distribusi dan pemasaran yang luas, baik offline maupun online.</li>
+      </ul>
+    </div>
+
+    <div class="about-section">
+      <h3>Produk Unggulan</h3>
+      <div class="product-highlight">
+        <div class="product-item">
+          <strong>Lontong Sayur:</strong> Lontong lembut dengan kuah sayur khas, disajikan dengan pelengkap seperti telur, tahu, tempe, dan kerupuk.
+        </div>
+        <div class="product-item">
+          <strong>Ketupat Babanci:</strong> Sajian khas Betawi yang langka, dengan kuah rempah kental dan isian ketupat yang nikmat, cocok untuk pecinta cita rasa unik.
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3>Profil Perusahaan</h3>
+      <div class="company-profile">
+        <table>
+          <tr>
+            <td>Nama Perusahaan</td>
+            <td>: Tracom (Tradevis Company)</td>
+          </tr>
+          <tr>
+            <td>Bidang Usaha</td>
+            <td>: Kuliner / Makanan Tradisional</td>
+          </tr>
+          <tr>
+            <td>Produk Utama</td>
+            <td>: Lontong Sayur & Ketupat Babanci</td>
+          </tr>
+          <tr>
+            <td>Bentuk Usaha</td>
+            <td>: Usaha Mikro, Kecil, dan Menengah (UMKM)</td>
+          </tr>
+          <tr>
+            <td>Alamat</td>
+            <td>: Jalan Tomang Rayang No. 56 RT 01/RW 01, Tomang, Kec. Grogol Petamburan, Jakarta Barat</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>: tracompany@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Instagram</td>
+            <td>: @tracom.____</td>
+          </tr>
+          <tr>
+            <td>Telp / Fax</td>
+            <td>: (021) 80637704 / (021) 80637706</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End About Section -->  
   <footer class="footer">
     <div class="container">&copy; 2025 Tracom. Semua Hak Dilindungi.</div>
   </footer>
