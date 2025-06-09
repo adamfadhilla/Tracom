@@ -14,5 +14,10 @@ class Order extends Model
     protected $casts = [
     'cart' => 'array', // Ini membuat Laravel otomatis decode JSON ke array saat akses $order->cart
 ];  
+public function getItemsAttribute($value)
+{
+    return json_decode($value, true);
+}
+
 
 }
