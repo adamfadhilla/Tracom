@@ -11,147 +11,160 @@
 
   <!-- Custom Styles -->
   <style>
-    :root {
-      --hijau: #306F38;
-      --coklat-tua: #5E4118;
-      --coklat-muda: #BB9479;
-      --kuning-krem: #FCEFB4;
-      --putih: #FFFFFF;
-    }
-
-    body {
-  margin-top: 70px;
-  background-color: var(--kuning-krem) !important;
-  font-family: 'Poppins', sans-serif;
-  color: var(--coklat-tua);
-  
+:root {
+  --hijau: #306F38;
+  --coklat-tua: #5E4118;
+  --coklat-muda: #BB9479;
+  --kuning-krem: #FCEFB4;
+  --putih: #FFFFFF;
 }
 
-    h1,
-    h5,
-    .fw-bold {
-      color: var(--coklat-tua);
-    }
+body {
+  margin-top: 70px;
+  background: var(--kuning-krem) !important;
+  font-family: 'Poppins', sans-serif;
+  color: var(--coklat-tua);
+}
 
-    a,
-    .text-muted {
-      color: var(--coklat-tua) !important;
-    }
+h1, h5, .fw-bold {
+  color: var(--coklat-tua);
+}
 
-    /* Buttons */
-    .btn-custom,
-    .btn-success {
-      background-color: var(--hijau);
-      color: var(--putih);
-      border: none;
-      border-radius: 20px;
-      transition: all .3s ease;
-    }
+a, .text-muted {
+  color: var(--coklat-tua) !important;
+}
 
-    .btn-custom:hover,
-    .btn-success:hover {
-      background-color: #24582d;
-      transform: scale(1.05);
-    }
+/* Buttons */
+.btn-custom,
+.btn-custom {
+  background: linear-gradient(to right, #306F38, #24582d);
+  color: var(--putih) !important;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
 
-    .btn-outline-secondary {
-      border-color: var(--coklat-muda);
-      color: var(--coklat-tua);
-      transition: all .3s ease;
-    }
+.btn-success {
+  background: linear-gradient(to right, #306F38, #24582d);
+  color: var(--putih) !important;  
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
 
-    .btn-outline-secondary:hover {
-      background-color: var(--coklat-muda);
-      color: var(--putih);
-      transform: scale(1.05);
-    }
+.btn-custom:hover,
+.btn-success:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #24582d, #1e4b27);
+}
 
-    /* Cards */
-    .card {
-      position: relative;
-      padding-top: 80px;
-      border: none;
-      border-radius: 20px;
-      background-color: var(--putih);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
-      transition: all .3s ease;
-    }
+.btn-outline-secondary {
+  border-color: var(--coklat-muda);
+  color: var(--coklat-tua);
+  transition: all 0.3s ease;
+  border-radius: 16px;
+}
 
-    .card:hover {
-      box-shadow: 0 12px 32px rgba(0, 0, 0, .15);
-      transform: translateY(-8px);
-    }
+.btn-outline-secondary:hover {
+  background-color: var(--coklat-muda);
+  color: var(--putih);
+  transform: scale(1.05);
+}
 
-    .circle-img {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background-color: transparent;
-      border: 3px solid var(--coklat-muda);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
-    }
+/* Cards */
+.card {
+  position: relative;
+  padding-top: 80px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--putih);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
 
-    .card-body { padding-top: 0; }
+.card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+}
 
-    .menu-wrapper   { margin-top: 100px; }
+.circle-img {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: var(--putih);
+  border: 3px solid var(--coklat-muda);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-    /* Order Summary */
-    .order-summary {
-      max-width: 600px;
-      margin: 50px auto 0;
-      padding: 30px;
-      background: var(--putih);
-      border: 2px dashed var(--coklat-muda);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(48, 111, 56, 0.15);
-    }
+.card-body {
+  padding-top: 0;
+}
 
-    ul#cart-items li {
-      background-color: var(--putih);
-      border: 1px solid var(--coklat-muda);
-      border-radius: 10px;
-      margin-bottom: 8px;
-      padding: 10px;
-      color: var(--coklat-tua);
-      font-weight: 500;
-    }
+.menu-wrapper {
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
 
-    a.btn-outline-secondary.mt-4 {
-      color: var(--coklat-tua);
-      border-color: var(--coklat-tua);
-    }
+/* Order Summary */
+.order-summary {
+  max-width: 600px;
+  margin: 50px auto 0;
+  padding: 30px;
+  background: var(--putih);
+  border: 2px dashed var(--coklat-muda);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(48, 111, 56, 0.15);
+}
 
-    a.btn-outline-secondary.mt-4:hover {
-      background-color: var(--coklat-tua);
-      color: var(--putih);
-    }
+ul#cart-items li {
+  background-color: var(--putih);
+  border: 1px solid var(--coklat-muda);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  padding: 10px;
+  color: var(--coklat-tua);
+  font-weight: 500;
+}
 
-    /* Footer */
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      background-color: var(--coklat-tua);
-      color: var(--putih);
-      text-align: center;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
+a.btn-outline-secondary.mt-4 {
+  color: var(--coklat-tua);
+  border-color: var(--coklat-tua);
+}
+
+a.btn-outline-secondary.mt-4:hover {
+  background-color: var(--coklat-tua);
+  color: var(--putih);
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  background-color: var(--coklat-tua);
+  color: var(--putih);
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
   </style>
 </head>
-<body class="py-5">
+<body>
+
   {{-- Navbar --}}
   @include('partials.navbar')
 
   <div class="container text-center">
-    <h1 class="mb-4 fw-bold">Menu Makanan Tracom</h1>
-    <p class="text-muted mb-5">Makanan tradisional khas dengan rasa luar biasa 🍴</p>
+    <div class="menu-wrapper">
+      <h1 class="mb-4 fw-bold">Menu Makanan Tracom</h1>
+      <p class="text-muted mb-5">Makanan tradisional khas dengan rasa luar biasa 🍴</p>
+    </div>
 
-    <div class="row justify-content-center menu-wrapper">
+    <div class="row justify-content-center">
       <!-- Ketupat Babanci -->
       <div class="col-md-4 mb-5">
         <div class="card h-100 shadow-sm">

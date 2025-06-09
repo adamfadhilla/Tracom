@@ -11,7 +11,11 @@ use App\Http\Controllers\CartController;
 // Halaman Utama & Menu
 // =======================
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/menu', [PageController::class, 'menu'])->name('menu');
+Route::get('/menu', [PageController::class, 'menu'])->name('menu');// routes/web.php
+Route::get('/tentang', [PageController::class, 'home'])->name('tentang');
+
+
+
 
 // =======================
 // Keranjang
