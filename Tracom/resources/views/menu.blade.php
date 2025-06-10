@@ -483,7 +483,7 @@ footer::before {
       <!-- Ketupat Babanci -->
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="card h-100">
-          <span class="price-tag">Rp25.000</span>
+          <span class="price-tag">Rp16.000</span>
           <img src="{{ asset('img/ketupat.jpeg') }}" class="circle-img" alt="Ketupat Babanci" />
           <div class="card-body">
             <h5 class="fw-bold">Ketupat Babanci</h5>
@@ -497,7 +497,7 @@ footer::before {
 
             <button class="btn btn-custom w-100 btn-add"
                     data-name="Ketupat Babanci"
-                    data-price="25000">
+                    data-price="16000">
               <i class="fas fa-plus me-2"></i> Tambah
             </button>
 
@@ -525,7 +525,7 @@ footer::before {
       <!-- Lontong Sayur -->
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="card h-100">
-          <span class="price-tag">Rp20.000</span>
+          <span class="price-tag">Rp13.000</span>
           <img src="{{ asset('img/lontong.jpeg') }}" class="circle-img" alt="Lontong Sayur" />
           <div class="card-body">
             <h5 class="fw-bold">Lontong Sayur</h5>
@@ -539,7 +539,7 @@ footer::before {
 
             <button class="btn btn-custom w-100 btn-add"
                     data-name="Lontong Sayur"
-                    data-price="20000">
+                    data-price="13000">
               <i class="fas fa-plus me-2"></i> Tambah
             </button>
 

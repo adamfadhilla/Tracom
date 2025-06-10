@@ -534,7 +534,7 @@ footer::before {
               <h4 class="product-title">Lontong Sayur Betawi</h4>
               <p class="product-desc">
                 Lontong lembut dengan kuah sayur labu siam khas, disajikan dengan telur, tahu, tempe, 
-                dan kerupuk. Dilengkapi dengan bumbu kacang dan sambal yang membuat cita rasanya semakin kaya.
+                dan kerupuk. Dilengkapi dengan sambal dan inovasi nasi jagung yang membuat cita rasanya semakin kaya.
               </p>
             </div>
           </div>
