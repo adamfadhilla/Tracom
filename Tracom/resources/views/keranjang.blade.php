@@ -25,13 +25,24 @@
 
     :root {
       --kuning-krem: #FCEFB4;
+      --primary: #306F38;
+      --primary-dark: #1B5E20;
+      --secondary: #5E4118;
+      --secondary-light: #8D6E63;
+      --accent: #FCEFB4;
+      --light: #FFF9E6;
+      --dark: #3A2C0D;
+      --white: #FFFFFF;
+      --border-radius: 12px;
+      --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     body {
       margin-top: 70px;
       background: var(--kuning-krem) !important;
       font-family: 'Poppins', sans-serif;
-      color: var(--coklat-tua);
+      color: var(--dark);
       overflow-x: hidden;
     }
 
@@ -44,18 +55,38 @@
     .cart-header h1 {
       font-size: 2.8rem;
       font-weight: 700;
-      color: #306F38;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .cart-header h1:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
     }
 
     .cart-item {
-      background-color: #FFFFFF;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
       padding: 20px;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .cart-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
     .food-image {
@@ -63,65 +94,164 @@
       height: 80px;
       object-fit: cover;
       border-radius: 10px;
-      border: 2px solid #BB9479;
+      border: 2px solid var(--secondary-light);
       margin-right: 20px;
+      transition: var(--transition);
+    }
+
+    .food-image:hover {
+      transform: scale(1.05);
     }
 
     .cart-item h5 {
       margin: 0;
       font-weight: 600;
-      color: #5E4118;
+      color: var(--secondary);
     }
 
     .cart-item .price {
-      color: #BB9479;
+      color: var(--secondary-light);
       font-weight: 600;
     }
 
-    .btn-checkout {
-      background-color: #306F38;
+    /* Quantity buttons */
+    .quantity-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
-      padding: 12px 30px;
-      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-increase {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-increase:hover {
+      background-color: var(--primary-dark);
+      transform: scale(1.1);
+    }
+
+    .btn-increase:active {
+      transform: scale(0.95);
+    }
+
+    .btn-decrease {
+      background-color: #f8f9fa;
+      color: var(--secondary);
+      border: 1px solid #dee2e6;
+    }
+
+    .btn-decrease:hover {
+      background-color: #e9ecef;
+      transform: scale(1.1);
+    }
+
+    .btn-decrease:active {
+      transform: scale(0.95);
+    }
+
+    .quantity-value {
+      min-width: 30px;
+      text-align: center;
       font-weight: 600;
-      border-radius: 40px;
-      transition: 0.3s ease;
+      color: var(--secondary);
+    }
+
+    /* Checkout button */
+    .btn-checkout {
+      background-color: var(--primary);
+      border: none;
+      padding: 14px 36px;
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.4s ease;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(48, 111, 56, 0.2);
     }
 
     .btn-checkout:hover {
-      background-color: #5E4118;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(94, 65, 24, 0.4);
-      color: #fff;
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(48, 111, 56, 0.3);
+    }
+
+    .btn-checkout:active {
+      transform: translateY(0);
+    }
+
+    .btn-checkout::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-checkout:hover::before {
+      left: 100%;
     }
 
     .notes-area {
-      background-color: #fff6de;
-      border: 2px dashed #BB9479;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px dashed var(--secondary-light);
       padding: 15px;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
       margin-bottom: 25px;
+      transition: var(--transition);
+    }
+
+    .notes-area:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-color: var(--primary);
     }
 
     .payment-details {
-      background: #FFFFFF;
-      border-radius: 12px;
+      background: var(--white);
+      border-radius: var(--border-radius);
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--box-shadow);
       margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .payment-details:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
     .payment-details h5 {
       font-weight: 600;
-      color: #5E4118;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .payment-details h5 i {
+      color: var(--primary);
     }
 
     .total-text {
       font-size: 1.4rem;
       font-weight: bold;
-      color: #306F38;
+      color: var(--primary);
     }
 /* Footer */
 :root {
@@ -131,6 +261,7 @@
   --putih: #FFFFFF;
 }
 
+<<<<<<< HEAD
 /* Footer */
 footer {
   margin-top: 100px;
@@ -178,6 +309,48 @@ footer::before {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   text-decoration: none;
 }
+=======
+    footer {
+      background-color: transparent;
+      color: var(--secondary);
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    /* Pulse animation for attention */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .cart-header h1 {
+        font-size: 2rem;
+      }
+      
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .food-image {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .btn-checkout {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+>>>>>>> b435892ac1dc7402345e52cd0e2cec7ad0783fdc
   </style>
 </head>
 <body>
@@ -202,7 +375,7 @@ footer::before {
 
     {{-- Rincian Pembayaran --}}
     <div class="payment-details">
-      <h5>Rincian Pembayaran</h5>
+      <h5><i class="fas fa-receipt"></i> Rincian Pembayaran</h5>
       <div class="d-flex justify-content-between mt-3">
         <span>Subtotal (<span id="total-items">0</span> menu)</span>
         <span id="subtotal-text">Rp 0</span>
@@ -216,10 +389,13 @@ footer::before {
 
     {{-- Tombol Checkout --}}
     <div class="text-end mb-5">
-      <a href="{{ route('checkout.form') }}" class="btn btn-checkout mt-3" id="btn-checkout">Lanjut ke Pembayaran <i class="fas fa-arrow-right ms-2"></i></a>
+      <a href="{{ route('checkout.form') }}" class="btn btn-checkout mt-3 pulse" id="btn-checkout">
+        <i class="fas fa-arrow-right"></i> Lanjut ke Pembayaran
+      </a>
     </div>
   </div>
 
+<<<<<<< HEAD
 <footer>
   <div class="container">
     <div class="row align-items-center">
@@ -240,6 +416,12 @@ footer::before {
     </div>
   </div>
 </footer>
+=======
+  <footer class="text-center">
+    &copy; 2025 Tracom. Semua Hak Dilindungi.
+  </footer>
+
+>>>>>>> b435892ac1dc7402345e52cd0e2cec7ad0783fdc
   <script>
     const cartContainer = document.getElementById('cart-container');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -250,7 +432,6 @@ footer::before {
       if (name.includes("lontong")) return "{{ asset('img/lontong.jpeg') }}";
       if (name.includes("ketupat")) return "{{ asset('img/ketupat.jpeg') }}";
       if (name.includes("nasi")) return "{{ asset('img/nasi.jpeg') }}";
-      // Tambahkan menu lain jika ada
       return "{{ asset('img/ketupat.jpeg') }}"; // default
     }
 
@@ -263,14 +444,16 @@ footer::before {
       let total = 0;
 
       if (cart.length === 0) {
-        cartContainer.innerHTML = '<p class="text-center text-muted">Keranjang Anda kosong.</p>';
+        cartContainer.innerHTML = '<div class="text-center py-4"><i class="fas fa-shopping-cart fa-3x mb-3" style="color: var(--secondary-light);"></i><p class="text-muted">Keranjang Anda kosong.</p></div>';
         document.querySelector('.payment-details').style.display = 'none';
+        document.querySelector('.notes-area').style.display = 'none';
         document.querySelector('.btn-checkout').style.display = 'none';
         return;
       }
 
       document.querySelector('.payment-details').style.display = 'block';
-      document.querySelector('.btn-checkout').style.display = 'inline-block';
+      document.querySelector('.notes-area').style.display = 'block';
+      document.querySelector('.btn-checkout').style.display = 'inline-flex';
 
       cart.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
@@ -281,14 +464,18 @@ footer::before {
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.innerHTML = `
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center flex-grow-1">
             <img src="${imgSrc}" class="food-image" alt="${item.name}" />
-            <div>
+            <div class="flex-grow-1">
               <h5>${item.name}</h5>
               <div class="d-flex align-items-center gap-2 mt-2">
-                <button class="btn btn-sm btn-outline-danger btn-decrease" data-index="${index}">−</button>
-                <span class="fw-semibold">${item.quantity}</span>
-                <button class="btn btn-sm btn-outline-success btn-increase" data-index="${index}">+</button>
+                <button class="quantity-btn btn-decrease" data-index="${index}">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="quantity-value">${item.quantity}</span>
+                <button class="quantity-btn btn-increase" data-index="${index}">
+                  <i class="fas fa-plus"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -306,16 +493,24 @@ footer::before {
 
     function attachQuantityButtons() {
       document.querySelectorAll('.btn-increase').forEach(btn => {
-        btn.onclick = () => {
+        btn.onclick = (e) => {
+          e.preventDefault();
           const i = btn.dataset.index;
           cart[i].quantity++;
           updateLocalStorage();
           updateCartDisplay();
+          
+          // Add animation feedback
+          btn.classList.add('animate');
+          setTimeout(() => {
+            btn.classList.remove('animate');
+          }, 300);
         };
       });
 
       document.querySelectorAll('.btn-decrease').forEach(btn => {
-        btn.onclick = () => {
+        btn.onclick = (e) => {
+          e.preventDefault();
           const i = btn.dataset.index;
           if (cart[i].quantity > 1) {
             cart[i].quantity--;
@@ -326,6 +521,12 @@ footer::before {
           }
           updateLocalStorage();
           updateCartDisplay();
+          
+          // Add animation feedback
+          btn.classList.add('animate');
+          setTimeout(() => {
+            btn.classList.remove('animate');
+          }, 300);
         };
       });
     }

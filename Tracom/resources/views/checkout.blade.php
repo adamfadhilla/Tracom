@@ -29,9 +29,10 @@
     
     body {
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--light);
+      background: var(--accent) !important; /* Changed to match cart page */
       color: var(--dark);
       line-height: 1.6;
+      margin-top: 70px; /* Added to match cart page */
     }
     
     .container {
@@ -152,71 +153,6 @@
       color: var(--primary);
     }
     
-    .payment-instruction {
-      background: var(--light-gray);
-      border-radius: var(--border-radius);
-      padding: 20px;
-      margin-top: 24px;
-      font-size: 0.95rem;
-      border-left: 4px solid var(--primary);
-    }
-    
-    .instruction-step {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
-      align-items: flex-start;
-      padding: 8px 0;
-    }
-    
-    .step-number {
-      background: var(--primary);
-      color: var(--white);
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-      font-weight: 600;
-    }
-    
-    .upload-area {
-      border: 2px dashed #ddd;
-      border-radius: var(--border-radius);
-      padding: 30px;
-      text-align: center;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: 10px;
-      background: var(--light-gray);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .upload-area:hover {
-      border-color: var(--primary);
-      background: rgba(76, 175, 80, 0.05);
-    }
-    
-    .upload-area i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-    
-    .upload-preview {
-      max-width: 100%;
-      max-height: 200px;
-      margin-top: 15px;
-      border-radius: 8px;
-      display: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #eee;
-    }
-    
     .form-label {
       font-weight: 600;
       color: var(--secondary);
@@ -281,11 +217,13 @@
       padding: 8px 16px;
       font-weight: 500;
       transition: var(--transition);
+      background-color: var(--light-gray);
     }
     
     .nav-pills .nav-link:hover {
       border-color: var(--primary);
       color: var(--primary);
+      background-color: rgba(48, 111, 56, 0.1);
     }
     
     .countdown-timer {
@@ -316,39 +254,53 @@
       transition: width 1s linear;
     }
     
-    .payment-methods {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    
-    .payment-method {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .upload-area {
+      border: 2px dashed #ddd;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      text-align: center;
       cursor: pointer;
       transition: var(--transition);
-      flex: 1;
-      min-width: 120px;
+      margin-top: 10px;
+      background: var(--light-gray);
+      position: relative;
+      overflow: hidden;
     }
     
-    .payment-method:hover {
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    
-    .payment-method.active {
+    .upload-area:hover {
       border-color: var(--primary);
       background: rgba(76, 175, 80, 0.05);
     }
     
-    .payment-method img {
-      height: 24px;
-      width: auto;
+    .upload-area i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .upload-preview {
+      max-width: 100%;
+      max-height: 200px;
+      margin-top: 15px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #eee;
+    }
+
+    /* New table styles for payment instructions */
+    .table {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .table-borderless td {
+      border: none;
+      padding: 12px 8px;
+    }
+
+    .table-borderless tr:not(:last-child) {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     
     @media (max-width: 768px) {
@@ -376,10 +328,6 @@
         font-size: 1rem;
         width: 100%;
         justify-content: center;
-      }
-      
-      .payment-method {
-        min-width: calc(50% - 10px);
       }
     }
     
@@ -499,6 +447,39 @@
             <img id="uploadPreview" class="upload-preview mt-3" src="#" alt="Preview Bukti Pembayaran" />
           </div>
         </div>
+
+        <!-- Moved payment instructions here in table format -->
+        <div class="section-box mt-4">
+          <h4><i class="fas fa-info-circle"></i> Petunjuk Pembayaran</h4>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td class="align-middle" style="width: 30px;">
+                  <div class="step-number">1</div>
+                </td>
+                <td>Pilih QR Code sesuai menu yang dipesan</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <div class="step-number">2</div>
+                </td>
+                <td>Scan QRIS menggunakan aplikasi mobile banking/e-wallet</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <div class="step-number">3</div>
+                </td>
+                <td>Upload bukti pembayaran di form ini</td>
+              </tr>
+              <tr>
+                <td class="align-middle">
+                  <div class="step-number">4</div>
+                </td>
+                <td>Klik tombol "Konfirmasi Pembayaran"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <!-- Ringkasan Pesanan & QRIS -->
@@ -516,14 +497,8 @@
             <span id="summary-total">Rp 0</span>
           </div>
 
-          <h4><i class="fas fa-qrcode"></i>Metode Pembayaran</h4>
-          <p class="text-muted mb-3">Pilih metode pembayaran yang diinginkan</p>
-          
-          <div class="payment-methods">
-            <div class="payment-method active" data-method="qris">
-              <img src="https://images.seeklogo.com/logo-png/39/2/quick-response-code-indonesia-standard-qris-logo-png_seeklogo-391791.png" alt="QRIS">
-              <span>QRIS</span>
-            </div>
+          <h4><i class="fas fa-qrcode"></i>Pembayaran QRIS</h4>
+          <p class="text-muted mb-3">Pilih QR Code sesuai menu yang dipesan</p>
           
           <div id="qris-section">
             <div class="mt-4">
@@ -534,67 +509,6 @@
               <div class="tab-content" id="qris-content">
                 <!-- QRIS content will be generated dynamically -->
               </div>
-            </div>
-          </div>
-          
-          <div id="bank-transfer-section" style="display: none;">
-            <div class="mt-4">
-              <div class="alert alert-info">
-                <i class="fas fa-info-circle me-2"></i> Silakan transfer ke rekening berikut:
-              </div>
-              <div class="bank-account">
-                <div class="d-flex justify-content-between mb-2">
-                  <span>Bank Mandiri</span>
-                  <strong>1234 5678 9012 3456</strong>
-                </div>
-                <div class="d-flex justify-content-between mb-2">
-                  <span>Bank BCA</span>
-                  <strong>9876 5432 1098 7654</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Bank BRI</span>
-                  <strong>5678 9012 3456 7890</strong>
-                </div>
-                <p class="mt-3 text-muted"><small>Gunakan kode unik <strong id="unique-code">123</strong> di akhir nominal transfer</small></p>
-              </div>
-            </div>
-          </div>
-          
-          <div id="ewallet-section" style="display: none;">
-            <div class="mt-4">
-              <div class="alert alert-info">
-                <i class="fas fa-info-circle me-2"></i> Pilih e-wallet untuk melihat nomor tujuan pembayaran
-              </div>
-              <select class="form-select mb-3">
-                <option selected>Pilih E-Wallet</option>
-                <option>Gopay</option>
-                <option>OVO</option>
-                <option>Dana</option>
-                <option>ShopeePay</option>
-              </select>
-              <div class="text-center">
-                <button class="btn btn-outline-primary">Tampilkan QR Code</button>
-              </div>
-            </div>
-          </div>
-          
-          <div class="payment-instruction mt-4">
-            <h5 class="mb-3"><i class="fas fa-info-circle me-2"></i>Petunjuk Pembayaran:</h5>
-            <div class="instruction-step">
-              <div class="step-number">1</div>
-              <div>Pilih metode pembayaran di atas</div>
-            </div>
-            <div class="instruction-step">
-              <div class="step-number">2</div>
-              <div id="instruction-step-2">Scan QRIS menggunakan aplikasi mobile banking/e-wallet</div>
-            </div>
-            <div class="instruction-step">
-              <div class="step-number">3</div>
-              <div>Upload bukti pembayaran di form sebelah kiri</div>
-            </div>
-            <div class="instruction-step">
-              <div class="step-number">4</div>
-              <div>Klik tombol "Konfirmasi Pembayaran"</div>
             </div>
           </div>
         </div>
@@ -630,12 +544,6 @@
     const countdownElement = document.getElementById('countdown');
     const progressBar = document.getElementById('progress-bar');
     const notification = document.getElementById('notification');
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    const qrisSection = document.getElementById('qris-section');
-    const bankTransferSection = document.getElementById('bank-transfer-section');
-    const ewalletSection = document.getElementById('ewallet-section');
-    const instructionStep2 = document.getElementById('instruction-step-2');
-    const uniqueCodeElement = document.getElementById('unique-code');
 
     // Sample QRIS data (in a real app, this would come from your backend)
     const qrisData = {
@@ -655,10 +563,6 @@
         account: 'Bank DEF - 5678901234'
       }
     };
-
-    // Generate random unique code
-    const uniqueCode = Math.floor(100 + Math.random() * 900);
-    uniqueCodeElement.textContent = uniqueCode;
 
     // Cart data
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -744,85 +648,57 @@
     }
 
     // Render QRIS tabs
-  // Render QRIS tabs
-function renderQRISTabs() {
-  qrisTabs.innerHTML = '';
-  qrisContent.innerHTML = '';
-  
-  // Get all menu items from cart (not unique)
-  if (cart.length === 0) {
-    qrisContent.innerHTML = '<div class="alert alert-info">Tidak ada item dalam keranjang.</div>';
-    return;
-  }
+    function renderQRISTabs() {
+      qrisTabs.innerHTML = '';
+      qrisContent.innerHTML = '';
+      
+      // Get all menu items from cart (not unique)
+      if (cart.length === 0) {
+        qrisContent.innerHTML = '<div class="alert alert-info">Tidak ada item dalam keranjang.</div>';
+        return;
+      }
 
-  cart.forEach((menuItem, index) => {
-    const qrisItem = qrisData[menuItem.id] || qrisData['lontong-sayur']; // Fallback
-    
-    // Create tab
-    const tabItem = document.createElement('li');
-    tabItem.className = 'nav-item';
-    tabItem.role = 'presentation';
-    
-    const tabButton = document.createElement('button');
-    tabButton.className = `nav-link ${index === 0 ? 'active' : ''}`;
-    tabButton.id = `pills-${menuItem.id}-${index}-tab`;
-    tabButton.setAttribute('data-bs-toggle', 'pill');
-    tabButton.setAttribute('data-bs-target', `#pills-${menuItem.id}-${index}`);
-    tabButton.type = 'button';
-    tabButton.role = 'tab';
-    tabButton.setAttribute('aria-controls', `pills-${menuItem.id}-${index}`);
-    tabButton.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
-    tabButton.textContent = menuItem.name;
-    
-    tabItem.appendChild(tabButton);
-    qrisTabs.appendChild(tabItem);
-    
-    // Create content
-    const contentDiv = document.createElement('div');
-    contentDiv.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
-    contentDiv.id = `pills-${menuItem.id}-${index}`;
-    contentDiv.role = 'tabpanel';
-    contentDiv.setAttribute('aria-labelledby', `pills-${menuItem.id}-${index}-tab`);
-    contentDiv.innerHTML = `
-      <div class="text-center">
-        <div class="qris-container">
-          <img src="${qrisItem.qrisImage}" alt="QRIS ${menuItem.name}" class="qris-img mb-3">
-          <p class="text-muted"><small>Untuk pembayaran ${menuItem.name}</small></p>
-          <p class="text-muted"><small>${qrisItem.account}</small></p>
-        </div>
-      </div>
-    `;
-    
-    qrisContent.appendChild(contentDiv);
-  });
-}
-
-    // Payment method selection
-    paymentMethods.forEach(method => {
-      method.addEventListener('click', function() {
-        // Remove active class from all methods
-        paymentMethods.forEach(m => m.classList.remove('active'));
+      cart.forEach((menuItem, index) => {
+        const qrisItem = qrisData[menuItem.id] || qrisData['lontong-sayur']; // Fallback
         
-        // Add active class to clicked method
-        this.classList.add('active');
+        // Create tab
+        const tabItem = document.createElement('li');
+        tabItem.className = 'nav-item';
+        tabItem.role = 'presentation';
         
-        const selectedMethod = this.dataset.method;
+        const tabButton = document.createElement('button');
+        tabButton.className = `nav-link ${index === 0 ? 'active' : ''}`;
+        tabButton.id = `pills-${menuItem.id}-${index}-tab`;
+        tabButton.setAttribute('data-bs-toggle', 'pill');
+        tabButton.setAttribute('data-bs-target', `#pills-${menuItem.id}-${index}`);
+        tabButton.type = 'button';
+        tabButton.role = 'tab';
+        tabButton.setAttribute('aria-controls', `pills-${menuItem.id}-${index}`);
+        tabButton.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+        tabButton.textContent = menuItem.name;
         
-        // Show corresponding section
-        qrisSection.style.display = selectedMethod === 'qris' ? 'block' : 'none';
-        bankTransferSection.style.display = selectedMethod === 'bank-transfer' ? 'block' : 'none';
-        ewalletSection.style.display = selectedMethod === 'ewallet' ? 'block' : 'none';
+        tabItem.appendChild(tabButton);
+        qrisTabs.appendChild(tabItem);
         
-        // Update instruction
-        if (selectedMethod === 'qris') {
-          instructionStep2.textContent = 'Scan QRIS menggunakan aplikasi mobile banking/e-wallet';
-        } else if (selectedMethod === 'bank-transfer') {
-          instructionStep2.textContent = 'Transfer ke rekening yang tertera di atas';
-        } else {
-          instructionStep2.textContent = 'Ikuti petunjuk pembayaran e-wallet yang dipilih';
-        }
+        // Create content
+        const contentDiv = document.createElement('div');
+        contentDiv.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
+        contentDiv.id = `pills-${menuItem.id}-${index}`;
+        contentDiv.role = 'tabpanel';
+        contentDiv.setAttribute('aria-labelledby', `pills-${menuItem.id}-${index}-tab`);
+        contentDiv.innerHTML = `
+          <div class="text-center">
+            <div class="qris-container">
+              <img src="${qrisItem.qrisImage}" alt="QRIS ${menuItem.name}" class="qris-img mb-3">
+              <p class="text-muted"><small>Untuk pembayaran ${menuItem.name}</small></p>
+              <p class="text-muted"><small>${qrisItem.account}</small></p>
+            </div>
+          </div>
+        `;
+        
+        qrisContent.appendChild(contentDiv);
       });
-    });
+    }
 
     // Upload area functionality
     uploadArea.addEventListener('click', function() {
@@ -908,12 +784,11 @@ function renderQRISTabs() {
       inputCart.value = JSON.stringify(cart);
       checkoutForm.appendChild(inputCart);
       
-      // Send payment method
-      const selectedMethod = document.querySelector('.payment-method.active').dataset.method;
+      // Send payment method (always QRIS now)
       const inputMethod = document.createElement('input');
       inputMethod.type = 'hidden';
       inputMethod.name = 'payment_method';
-      inputMethod.value = selectedMethod;
+      inputMethod.value = 'qris';
       checkoutForm.appendChild(inputMethod);
       
       // Show loading state
