@@ -521,18 +521,9 @@
           
           <div class="payment-methods">
             <div class="payment-method active" data-method="qris">
-              <img src="https://qris.id/wp-content/uploads/2021/08/QRIS-Logo-2021.png" alt="QRIS">
+              <img src="https://images.seeklogo.com/logo-png/39/2/quick-response-code-indonesia-standard-qris-logo-png_seeklogo-391791.png" alt="QRIS">
               <span>QRIS</span>
             </div>
-            <div class="payment-method" data-method="bank-transfer">
-              <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="Bank Transfer">
-              <span>Bank Transfer</span>
-            </div>
-            <div class="payment-method" data-method="ewallet">
-              <img src="https://cdn-icons-png.flaticon.com/512/2504/2504839.png" alt="E-Wallet">
-              <span>E-Wallet</span>
-            </div>
-          </div>
           
           <div id="qris-section">
             <div class="mt-4">
@@ -753,60 +744,58 @@
     }
 
     // Render QRIS tabs
-    function renderQRISTabs() {
-      qrisTabs.innerHTML = '';
-      qrisContent.innerHTML = '';
-      
-      // Get unique menu items from cart
-      const uniqueMenus = [...new Set(cart.map(item => item.id))];
-      
-      if (uniqueMenus.length === 0) {
-        qrisContent.innerHTML = '<div class="alert alert-info">Tidak ada item dalam keranjang.</div>';
-        return;
-      }
+  // Render QRIS tabs
+function renderQRISTabs() {
+  qrisTabs.innerHTML = '';
+  qrisContent.innerHTML = '';
+  
+  // Get all menu items from cart (not unique)
+  if (cart.length === 0) {
+    qrisContent.innerHTML = '<div class="alert alert-info">Tidak ada item dalam keranjang.</div>';
+    return;
+  }
 
-      uniqueMenus.forEach((menuId, index) => {
-        const menuItem = cart.find(item => item.id === menuId);
-        const qrisItem = qrisData[menuId] || qrisData['lontong-sayur']; // Fallback
-        
-        // Create tab
-        const tabItem = document.createElement('li');
-        tabItem.className = 'nav-item';
-        tabItem.role = 'presentation';
-        
-        const tabButton = document.createElement('button');
-        tabButton.className = `nav-link ${index === 0 ? 'active' : ''}`;
-        tabButton.id = `pills-${menuId}-tab`;
-        tabButton.setAttribute('data-bs-toggle', 'pill');
-        tabButton.setAttribute('data-bs-target', `#pills-${menuId}`);
-        tabButton.type = 'button';
-        tabButton.role = 'tab';
-        tabButton.setAttribute('aria-controls', `pills-${menuId}`);
-        tabButton.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
-        tabButton.textContent = menuItem.name;
-        
-        tabItem.appendChild(tabButton);
-        qrisTabs.appendChild(tabItem);
-        
-        // Create content
-        const contentDiv = document.createElement('div');
-        contentDiv.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
-        contentDiv.id = `pills-${menuId}`;
-        contentDiv.role = 'tabpanel';
-        contentDiv.setAttribute('aria-labelledby', `pills-${menuId}-tab`);
-        contentDiv.innerHTML = `
-          <div class="text-center">
-            <div class="qris-container">
-              <img src="${qrisItem.qrisImage}" alt="QRIS ${menuItem.name}" class="qris-img mb-3">
-              <p class="text-muted"><small>Untuk pembayaran ${menuItem.name}</small></p>
-              <p class="text-muted"><small>${qrisItem.account}</small></p>
-            </div>
-          </div>
-        `;
-        
-        qrisContent.appendChild(contentDiv);
-      });
-    }
+  cart.forEach((menuItem, index) => {
+    const qrisItem = qrisData[menuItem.id] || qrisData['lontong-sayur']; // Fallback
+    
+    // Create tab
+    const tabItem = document.createElement('li');
+    tabItem.className = 'nav-item';
+    tabItem.role = 'presentation';
+    
+    const tabButton = document.createElement('button');
+    tabButton.className = `nav-link ${index === 0 ? 'active' : ''}`;
+    tabButton.id = `pills-${menuItem.id}-${index}-tab`;
+    tabButton.setAttribute('data-bs-toggle', 'pill');
+    tabButton.setAttribute('data-bs-target', `#pills-${menuItem.id}-${index}`);
+    tabButton.type = 'button';
+    tabButton.role = 'tab';
+    tabButton.setAttribute('aria-controls', `pills-${menuItem.id}-${index}`);
+    tabButton.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+    tabButton.textContent = menuItem.name;
+    
+    tabItem.appendChild(tabButton);
+    qrisTabs.appendChild(tabItem);
+    
+    // Create content
+    const contentDiv = document.createElement('div');
+    contentDiv.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
+    contentDiv.id = `pills-${menuItem.id}-${index}`;
+    contentDiv.role = 'tabpanel';
+    contentDiv.setAttribute('aria-labelledby', `pills-${menuItem.id}-${index}-tab`);
+    contentDiv.innerHTML = `
+      <div class="text-center">
+        <div class="qris-container">
+          <img src="${qrisItem.qrisImage}" alt="QRIS ${menuItem.name}" class="qris-img mb-3">
+          <p class="text-muted"><small>Untuk pembayaran ${menuItem.name}</small></p>
+          <p class="text-muted"><small>${qrisItem.account}</small></p>
+        </div>
+      </div>
+    `;
+    
+    qrisContent.appendChild(contentDiv);
+  });
+}
 
     // Payment method selection
     paymentMethods.forEach(method => {
