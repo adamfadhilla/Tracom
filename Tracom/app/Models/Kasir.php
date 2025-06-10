@@ -12,10 +12,6 @@ class Kasir extends Authenticatable
     public $incrementing = true; 
     protected $fillable = ['name', 'password'];
     protected $hidden = ['password'];
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
 
     // Override kolom yang dipakai untuk login
     public function getAuthIdentifierName()
