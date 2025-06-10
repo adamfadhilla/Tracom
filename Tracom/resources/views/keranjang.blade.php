@@ -123,11 +123,61 @@
       font-weight: bold;
       color: #306F38;
     }
+/* Footer */
+:root {
+  --kuning-krem: #FCEFB4;
+  --coklat-tua: #5E4118;
+  --coklat-muda: #BB9479;
+  --putih: #FFFFFF;
+}
 
-    footer {
-      background-color: transparent;
-      color: #5E4118;
-    }
+/* Footer */
+footer {
+  margin-top: 100px;
+  padding: 30px 0;
+  background: var(--coklat-tua);
+  color: var(--putih);
+  text-align: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23BB9479" fill-opacity="0.05" d="M20,20L40,40L20,60L40,80L60,60L80,80L60,40L80,20L60,20L40,40L20,20Z"/></svg>');
+  background-size: 100px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--putih);
+  border: 2px solid var(--coklat-muda);
+  color: var(--coklat-tua);
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 18px;
+}
+
+.social-icon:hover {
+  background: var(--coklat-muda);
+  color: var(--putih);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
   </style>
 </head>
 <body>
@@ -170,10 +220,26 @@
     </div>
   </div>
 
-  <footer class="text-center mt-5 py-4">
-    &copy; 2025 Tracom. Semua Hak Dilindungi.
-  </footer>
-
+<footer>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-md-start mb-3 mb-md-0">
+        <p class="mb-0 text-white">&copy; 2025 Tracom. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a href="https://www.instagram.com/tracom.?igsh=b3g3NWZhZWJ1dmZ2" target="_blank" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@tracom.?_t=ZS-8x4zfkuzt6f&_r=1" target="_blank" class="social-icon" title="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://wa.me/628979567165" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
   <script>
     const cartContainer = document.getElementById('cart-container');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];

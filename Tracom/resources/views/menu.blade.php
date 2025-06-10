@@ -338,8 +338,8 @@ ul#cart-items li .item-quantity {
 footer {
   margin-top: 100px;
   padding: 30px 0;
-  background: linear-gradient(135deg, var(--coklat-tua), #4a3515);
-  color: var(--putih);
+  background: #5E4118; /* Warna coklat tua */
+  color: white;
   text-align: center;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -365,18 +365,20 @@ footer::before {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  color: var(--putih);
+  background: white; /* Background putih */
+  border: 2px solid var(--secondary); /* Outline coklat muda */
+  color: var(--dark); /* Warna icon coklat tua */
   margin: 0 5px;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .social-icon:hover {
-  background: rgba(255,255,255,0.2);
+  background: var(--secondary); /* Background coklat muda saat hover */
+  color: white; /* Warna icon putih saat hover */
   transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-
-/* Animation */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -585,20 +587,25 @@ footer::before {
   </div>
 
   <footer>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 text-md-start mb-3 mb-md-0">
-          <p class="mb-0">&copy; 2025 Tracom. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-        </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-md-start mb-3 mb-md-0">
+        <p class="mb-0 text-white">&copy; 2025 Tracom. All rights reserved.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <a href="https://www.instagram.com/tracom.?igsh=b3g3NWZhZWJ1dmZ2" target="_blank" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@tracom.?_t=ZS-8x4zfkuzt6f&_r=1" target="_blank" class="social-icon" title="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://wa.me/628979567165" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- Toast Notification Container -->
   <div class="toast-container"></div>
