@@ -7,11 +7,34 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #FCEFB4;
-      color: #5E4118;
-    }
+
+/* Animasi fade-in smooth untuk seluruh kontainer keranjang */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+:root {
+    --kuning-krem: #FCEFB4;
+}
+
+body {
+  margin-top: 70px;
+  background: var(--kuning-krem) !important;
+  font-family: 'Poppins', sans-serif;
+  color: var(--coklat-tua);
+  overflow-x: hidden;
+}
 
     .cart-header {
       text-align: center;
